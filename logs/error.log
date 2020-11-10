@@ -1,0 +1,29 @@
+[Tue Nov 10 22:42:58.526272 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 22:42:58.526574 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 22:50:01.940971 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 22:50:02.121010 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 22:50:02.121038 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 22:55:14.902830 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 22:55:15.090693 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 22:55:15.090726 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:04:27.095349 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 23:04:27.191839 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 23:04:27.191992 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:07:15.632253 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 23:07:15.726852 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 23:07:15.726988 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:07:54.797110 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 23:07:54.872670 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 23:07:54.872789 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:08:23.927732 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 23:08:24.009087 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 23:08:24.009237 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:08:54.647356 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 23:08:54.726475 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 23:08:54.726595 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:17:14.360070 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 23:17:14.442741 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 23:17:14.442928 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:29:36.486544 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
+[Tue Nov 10 23:29:36.560396 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Tue Nov 10 23:29:36.560598 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
