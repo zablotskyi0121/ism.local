@@ -31,3 +31,14 @@
 [Wed Nov 11 08:45:47.072087 2020] [mpm_prefork:notice] [pid 789] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
 [Wed Nov 11 08:45:47.086316 2020] [core:notice] [pid 789] AH00094: Command line: '/usr/sbin/apache2'
 [Wed Nov 11 08:47:32.598714 2020] [mpm_prefork:notice] [pid 789] AH00169: caught SIGTERM, shutting down
+[Wed Nov 11 11:49:42.287203 2020] [authz_core:error] [pid 3321:tid 140669481862912] [client 127.0.0.1:41064] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/public
+[Wed Nov 11 11:49:51.353291 2020] [authz_core:error] [pid 3322:tid 140669661488896] [client 127.0.0.1:41066] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/public
+[Wed Nov 11 11:50:40.226875 2020] [authz_core:error] [pid 3321:tid 140669456684800] [client 127.0.0.1:41076] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/public
+[Wed Nov 11 11:50:47.837365 2020] [authz_core:error] [pid 3321:tid 140669414721280] [client 127.0.0.1:41084] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/public
+[Wed Nov 11 14:02:09.307700 2020] [authz_core:error] [pid 3322:tid 140669565789952] [client 127.0.0.1:41202] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/public
+[Wed Nov 11 14:02:11.338563 2020] [authz_core:error] [pid 3322:tid 140669557397248] [client 127.0.0.1:41202] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/public, referer: http://ism.local/pub/index.php
+[Wed Nov 11 14:27:36.851593 2020] [authz_core:error] [pid 5707:tid 140133483398912] [client 127.0.0.1:41282] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
+[Wed Nov 11 14:28:07.118499 2020] [authz_core:error] [pid 5707:tid 140133466613504] [client 127.0.0.1:41284] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
+[Wed Nov 11 14:28:10.519196 2020] [authz_core:error] [pid 5707:tid 140133458220800] [client 127.0.0.1:41284] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
+[Wed Nov 11 14:29:49.142218 2020] [authz_core:error] [pid 5708:tid 140133596063488] [client 127.0.0.1:41286] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
+[Wed Nov 11 14:33:53.306990 2020] [authz_core:error] [pid 5708:tid 140133508577024] [client 127.0.0.1:41294] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
