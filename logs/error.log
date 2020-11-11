@@ -42,3 +42,23 @@
 [Wed Nov 11 14:28:10.519196 2020] [authz_core:error] [pid 5707:tid 140133458220800] [client 127.0.0.1:41284] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
 [Wed Nov 11 14:29:49.142218 2020] [authz_core:error] [pid 5708:tid 140133596063488] [client 127.0.0.1:41286] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
 [Wed Nov 11 14:33:53.306990 2020] [authz_core:error] [pid 5708:tid 140133508577024] [client 127.0.0.1:41294] AH01630: client denied by server configuration: /home/zablotskyi/www/ism.local/index.php
+[Wed Nov 11 21:28:35.641980 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP Warning:  include(db.php): failed to open stream: No such file or directory in /home/zablotskyi/www/ism.local/pub/index.php on line 9
+[Wed Nov 11 21:28:35.642025 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP Stack trace:
+[Wed Nov 11 21:28:35.642033 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP   1. {main}() /home/zablotskyi/www/ism.local/pub/index.php:0
+[Wed Nov 11 21:28:35.642066 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.:/usr/share/php') in /home/zablotskyi/www/ism.local/pub/index.php on line 9
+[Wed Nov 11 21:28:35.642075 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP Stack trace:
+[Wed Nov 11 21:28:35.642079 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP   1. {main}() /home/zablotskyi/www/ism.local/pub/index.php:0
+[Wed Nov 11 21:28:35.642098 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP Notice:  Undefined variable: db_connection in /home/zablotskyi/www/ism.local/pub/index.php on line 11
+[Wed Nov 11 21:28:35.642102 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP Stack trace:
+[Wed Nov 11 21:28:35.642105 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP   1. {main}() /home/zablotskyi/www/ism.local/pub/index.php:0
+[Wed Nov 11 21:28:35.642159 2020] [php7:notice] [pid 7016] [client 127.0.0.1:41868] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/zablotskyi/www/ism.local/pub/index.php:11\nStack trace:\n#0 {main}\n  thrown in /home/zablotskyi/www/ism.local/pub/index.php on line 11
+[Wed Nov 11 21:29:32.722343 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP Warning:  include(config/config.php): failed to open stream: No such file or directory in /home/zablotskyi/www/ism.local/pub/index.php on line 9
+[Wed Nov 11 21:29:32.722380 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP Stack trace:
+[Wed Nov 11 21:29:32.722387 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP   1. {main}() /home/zablotskyi/www/ism.local/pub/index.php:0
+[Wed Nov 11 21:29:32.722421 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP Warning:  include(): Failed opening 'config/config.php' for inclusion (include_path='.:/usr/share/php') in /home/zablotskyi/www/ism.local/pub/index.php on line 9
+[Wed Nov 11 21:29:32.722427 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP Stack trace:
+[Wed Nov 11 21:29:32.722432 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP   1. {main}() /home/zablotskyi/www/ism.local/pub/index.php:0
+[Wed Nov 11 21:29:32.722448 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP Notice:  Undefined variable: db_connection in /home/zablotskyi/www/ism.local/pub/index.php on line 11
+[Wed Nov 11 21:29:32.722452 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP Stack trace:
+[Wed Nov 11 21:29:32.722456 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP   1. {main}() /home/zablotskyi/www/ism.local/pub/index.php:0
+[Wed Nov 11 21:29:32.722497 2020] [php7:notice] [pid 7014] [client 127.0.0.1:41870] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/zablotskyi/www/ism.local/pub/index.php:11\nStack trace:\n#0 {main}\n  thrown in /home/zablotskyi/www/ism.local/pub/index.php on line 11

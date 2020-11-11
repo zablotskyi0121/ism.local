@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php
-        include "db.php";
+        include "/home/zablotskyi/www/ism.local/config/config.php";
         
         $result = $db_connection->query('SELECT * FROM Ism.products');
 
