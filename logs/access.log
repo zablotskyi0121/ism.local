@@ -137,3 +137,4 @@
 127.0.0.1 - - [11/Nov/2020:21:36:56 +0200] "GET /phpmyadmin/themes/pmahomme/img/pause.png HTTP/1.1" 200 538 "http://ism.local/phpmyadmin/phpmyadmin.css.php?nocache=6359818857ltr&server=1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:82.0) Gecko/20100101 Firefox/82.0"
 ::1 - - [11/Nov/2020:21:37:02 +0200] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.41 (Ubuntu) (internal dummy connection)"
 ::1 - - [11/Nov/2020:21:37:03 +0200] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.41 (Ubuntu) (internal dummy connection)"
+127.0.0.1 - - [11/Nov/2020:22:00:46 +0200] "POST /phpmyadmin/index.php HTTP/1.1" 200 2941 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:82.0) Gecko/20100101 Firefox/82.0"
