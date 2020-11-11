@@ -27,3 +27,7 @@
 [Tue Nov 10 23:29:36.486544 2020] [mpm_prefork:notice] [pid 792] AH00171: Graceful restart requested, doing restart
 [Tue Nov 10 23:29:36.560396 2020] [mpm_prefork:notice] [pid 792] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
 [Tue Nov 10 23:29:36.560598 2020] [core:notice] [pid 792] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 10 23:43:54.710290 2020] [mpm_prefork:notice] [pid 792] AH00169: caught SIGTERM, shutting down
+[Wed Nov 11 08:45:47.072087 2020] [mpm_prefork:notice] [pid 789] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations
+[Wed Nov 11 08:45:47.086316 2020] [core:notice] [pid 789] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Nov 11 08:47:32.598714 2020] [mpm_prefork:notice] [pid 789] AH00169: caught SIGTERM, shutting down
