@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <?php foreach($productList as $productItem) : ?>
+        <div class="product">
+            <img src="<?php echo $productItem['Image'];?>" width="50px", alt=""> 
+            <h1 class="Name"><a href="#"><?php echo $productItem['Name'];?></a></h1>
+            <p><?php echo $productItem['Id'];?></p>
+            <p><?php echo $productItem['Price'];?></p>
+            <p><?php echo $productItem['Description'];?></p>
+         </div>   
+        <?php endforeach;?>
+
+       
+    </body>
+</html>
+
+
