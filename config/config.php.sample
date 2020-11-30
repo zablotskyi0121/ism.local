@@ -1,15 +1,14 @@
 <?php
-$server = "localhost";
-$username = "";
-$password = "";
-$options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-try{
-    $db_connection = new PDO("mysql:host=$server; dbname = Ism", $username, $password, $options);
-    //echo 'Connection successfully';
-    
-} catch (PDOException $ex) {
-    echo 'Connection failed: ' . $ex->getMessage();
-}
+class Config {
 
+    public static function getConfig() {
+        return [
+            'db\username' => '',
+            'db\host' => '',
+            'db\password' => '',
+            'db\dbName' => ''
+        ]; 
+    }
+}    
 ?>
