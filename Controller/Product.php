@@ -2,12 +2,12 @@
 
 namespace Controller;
 
-class ShowProducts {
+class Product {
         
-    public static function actionProduct() {
+    public static function getList() {
 
         
-        $productList = \Model\GetProductData::getProductFromDB();
+        $productList = \Model\Product::getAllProduct();
              
         require_once _DIR_ . '/View/productList.phtml';        
         

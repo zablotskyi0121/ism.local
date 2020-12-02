@@ -1,7 +1,7 @@
 <?php
 
 define('_DIR_PUB_', getcwd());
-define('_DIR_', str_replace('/pub', '/', _DIR_PUB_));
+define('_DIR_', realpath('../') .DIRECTORY_SEPARATOR);
 
 function appAutoload($class){
     $file = _DIR_ . str_replace("\\", "/", $class) . '.php';

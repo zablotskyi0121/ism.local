@@ -2,9 +2,9 @@
 // \Model\GetProductData;
 namespace Model;
 
-class GetProductData {
+class Product {
    
-    public static function getProductFromDB() {
+    public static function getAllProduct() {
         
         $db_connection = \System\Db::connTODB();
         

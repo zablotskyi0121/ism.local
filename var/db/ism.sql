@@ -29,7 +29,7 @@ CREATE TABLE `products` (
   `Name` varchar(29) NOT NULL,
   `Description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Price` float NOT NULL,
-  `Image` blob NOT NULL,
+  `Image` varchar(500) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +40,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'1',55,'iPhone 5','iPhone 5',500,_binary '/www/ism/pub/media/images/iphone5.jpg'),(2,'2',51,'iPhone 6','iPhone 6',600,_binary '/www/ism/pub/media/images/iphone6.jpg'),(3,'3',50,'iPhone 7','iPhone 7',700,_binary '/www/ism/pub/media/images/iphone7.jpg'),(4,'4',44,'iPhone 8','iPhone 8',800,_binary '/www/ism/pub/media/images/iphone8.jpg'),(5,'5',21,'iPhone X','iPhone X',890,_binary '/www/ism/pub/media/images/iphoneX.jpg');
+INSERT INTO `products` VALUES (1,'1',55,'iPhone 5','iPhone 5',500,'media/images/iphone5.jpg'),(2,'2',51,'iPhone 6','iPhone 6',600,'media/images/iphone6.jpg'),(3,'3',50,'iPhone 7','iPhone 7',700,'media/images/iphone7.jpg'),(4,'4',44,'iPhone 8','iPhone 8',800,'media/images/iphone8.jpg'),(5,'5',21,'iPhone X','iPhone X',890,'media/images/iphoneX.jpg');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-11 21:59:07
+-- Dump completed on 2020-12-02 21:16:06
