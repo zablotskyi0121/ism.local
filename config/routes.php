@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    'product/list'=>'Product/getList',
+    'product/list'=>'\Controller\Product/getList',
 );

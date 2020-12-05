@@ -1,5 +1,7 @@
 <?php
 
+namespace System;
+
 class Router {
     
     private $routes;
@@ -11,7 +13,7 @@ class Router {
 
     }
     
-    private function getURI() //returns request string
+    private function getURI()
     {
         if (!empty($_SERVER['REQUEST_URI'])){
             return trim($_SERVER['REQUEST_URI'], '/');
@@ -25,28 +27,15 @@ class Router {
         
         foreach ($this->routes as $uriParameter => $path){
             if (preg_match("~$uriParameter~", $uri)){
-                
                 $route = explode('/', $path);
-                
                 $controllerName = ucfirst(array_shift($route));
-                
                 $methodName = array_shift($route);
-
-                $controllerFile = _DIR_ . 'Controller/' . $controllerName . '.php';
-                
-                if (file_exists($controllerFile)) {
-                    include_once ($controllerFile);
-                }
-                
                 $controllerObject = new $controllerName;
                 $result = call_user_func($controllerObject, $methodName());
                 if ($result != null) {
                     break;
-               
-                    
                 } 
             }
         }
-        
     }
 }
