@@ -6,7 +6,7 @@ class Product {
    
     public static function getAllProduct() {
         
-        $db_connection = \System\Db::connTODB();
+        $db_connection = \System\Db::getInstance()->getDbConnection();
         
         $productList = array();
         

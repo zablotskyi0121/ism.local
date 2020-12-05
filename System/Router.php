@@ -26,12 +26,12 @@ class Router {
         $uri = $this->getURI();
         
         foreach ($this->routes as $uriParameter => $path){
-            if (preg_match("~$uriParameter~", $uri)){
+            if ($uriParameter == trim($uri, '/')){
                 $route = explode('/', $path);
                 $controllerName = ucfirst(array_shift($route));
                 $methodName = array_shift($route);
                 $controllerObject = new $controllerName;
-                $result = call_user_func($controllerObject, $methodName());
+                $result = $controllerObject->$methodName();
                 if ($result != null) {
                     break;
                 } 

@@ -4,11 +4,13 @@ namespace Controller;
 
 class Product {
         
-    public static function getList() {
+    public function getList() {
 
         
         $productList = \Model\Product::getAllProduct();
-             
-        require_once _DIR_ . '/View/productList.phtml';        
+        $renderer = new \System\Renderer();   
+        $renderer = $renderer->render('/View/productList.phtml', ['productList'=> $productList]);
+        
+              
     } 
 }
