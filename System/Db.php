@@ -12,10 +12,15 @@ class Db{
         $password = \System\ConfigManager::getConfig('db\password');
         $server = \System\ConfigManager::getConfig('db\host');
         $dbname = \System\ConfigManager::getConfig('db\dbName');
-
+        
+        try{
         $db_connection = new \PDO("mysql:dbname=$dbname;host=$server", $username, $password);
-    
-        $this->db_connection = $db_connection; 
+        $this->db_connection = $db_connection;
+        } 
+        catch (PDOException $ex) {
+        echo 'Connection failed: ' . $ex->getMessage();
+        }       
+         
     }
     
     public static function getInstance() {
