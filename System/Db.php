@@ -4,8 +4,7 @@ namespace System;
 
 class Db {
 
-    	private static $_instance = null;
-
+    private static $_instance = null;
 
     private function __construct() {
         $username = \System\ConfigManager::getConfig('db\username');
@@ -19,7 +18,7 @@ class Db {
             exit('Connection failed: ' . $ex->getMessage());
         }
     }
-   
+
     public static function getInstance() {
 
         if (self::$_instance != null) {

@@ -13,7 +13,7 @@ class Router {
         $controllerName = 'Home';
         $modelName = 'Home';
         $action = 'actionHome';
-        
+
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         if (!empty($routes[1])) {
             $controllerName = ucfirst($routes[1]);

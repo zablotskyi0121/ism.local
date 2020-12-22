@@ -25,6 +25,6 @@ class Product {
         }
 
         return $productList;
-    } 
+    }
 
 }

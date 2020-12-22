@@ -3,5 +3,5 @@
 namespace Model;
 
 class Home {
-
+    
 }
