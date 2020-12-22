@@ -3,14 +3,13 @@
 namespace Controller;
 
 class Product {
-        
-    public function getList() {
 
-        
+    public function actionList() {
+
+
         $productList = \Model\Product::getAllProduct();
-        $renderer = new \System\Renderer();   
-        $renderer = $renderer->render('/View/productList.phtml', ['productList'=> $productList]);
-        
-              
-    } 
+        $renderer = new \System\Renderer();
+        $renderer = $renderer->render('/View/productList.phtml', ['productList' => $productList]);
+    }
+
 }

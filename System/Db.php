@@ -2,38 +2,31 @@
 
 namespace System;
 
-class Db{
-    
-    private static $object;
-    private $db_connection;
-    
+class Db {
+
+    	private static $_instance = null;
+
+
     private function __construct() {
         $username = \System\ConfigManager::getConfig('db\username');
         $password = \System\ConfigManager::getConfig('db\password');
         $server = \System\ConfigManager::getConfig('db\host');
         $dbname = \System\ConfigManager::getConfig('db\dbName');
-        
-        try{
-        $db_connection = new \PDO("mysql:dbname=$dbname;host=$server", $username, $password);
-        $this->db_connection = $db_connection;
-        } 
-        catch (PDOException $ex) {
-        echo 'Connection failed: ' . $ex->getMessage();
-        }       
-         
-    }
-    
-    public static function getInstance() {
-        
-        if (static::$object == null) {
-        static::$object = new static();
+
+        try {
+            self::$_instance = new \PDO("mysql:dbname=$dbname;host=$server", $username, $password);
+        } catch (\PDOException $ex) {
+            exit('Connection failed: ' . $ex->getMessage());
         }
-        return static::$object;
-        
     }
-    
-    public function getDbConnection() {
-        return $this->db_connection;
+   
+    public static function getInstance() {
+
+        if (self::$_instance != null) {
+            return self::$_instance;
+        }
+
+        return new self;
     }
 
-  }
+}

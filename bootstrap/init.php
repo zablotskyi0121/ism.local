@@ -1,12 +1,12 @@
 <?php
 
 define('_DIR_PUB_', getcwd());
-define('_DIR_', realpath('../') .DIRECTORY_SEPARATOR);
+define('_DIR_', realpath('../') . DIRECTORY_SEPARATOR);
 
-function appAutoload($class){
+function appAutoload($class) {
     $file = _DIR_ . str_replace("\\", "/", $class) . '.php';
 
-    if (is_readable($file)){
+    if (is_readable($file)) {
         require_once ($file);
     }
 }

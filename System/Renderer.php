@@ -2,12 +2,11 @@
 
 namespace System;
 
-class Renderer{
-    
+class Renderer {
+
     public function render($template, $params) {
         extract($params);
-        require_once _DIR_ . $template; 
-        
+        require_once _DIR_ . $template;
     }
-}
 
+}

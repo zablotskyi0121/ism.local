@@ -2,40 +2,39 @@
 
 namespace System;
 
+use Controller\Home;
+
 class Router {
-    
-    private $routes;
-    
-    public function __construct() 
-    {
-           $routerPath = _DIR_ . '/config/routes.php';
-           $this->routes = include($routerPath);
 
-    }
-    
-    private function getURI()
-    {
-        if (!empty($_SERVER['REQUEST_URI'])){
-            return trim($_SERVER['REQUEST_URI'], '/');
+    const CONTROLLER_PATH = '\\Controller\\';
+
+    public function run() {
+
+        $controllerName = 'Home';
+        $modelName = 'Home';
+        $action = 'actionHome';
+        
+        $routes = explode('/', $_SERVER['REQUEST_URI']);
+        if (!empty($routes[1])) {
+            $controllerName = ucfirst($routes[1]);
         }
-        
-    }
-
-    public function run() 
-    {
-        $uri = $this->getURI();
-        
-        foreach ($this->routes as $uriParameter => $path){
-            if ($uriParameter == trim($uri, '/')){
-                $route = explode('/', $path);
-                $controllerName = ucfirst(array_shift($route));
-                $methodName = array_shift($route);
-                $controllerObject = new $controllerName;
-                $result = $controllerObject->$methodName();
-                if ($result != null) {
-                    break;
-                } 
-            }
+        if (!empty($routes[2])) {
+            $action = 'action' . ucfirst($routes[2]);
+        }
+        $controllerPath = self::CONTROLLER_PATH . $controllerName;
+        $controller = new $controllerPath();
+        if (method_exists($controller, $action)) {
+            $controller->$action();
+        } else {
+            Route::ErrorPage404();
         }
     }
+
+    function ErrorPage404() {
+        $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+        header('HTTP/1.1 404 Not Found');
+        header("Status: 404 Not Found");
+        header('Location:' . $host . '404');
+    }
+
 }
