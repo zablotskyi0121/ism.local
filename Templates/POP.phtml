@@ -1,5 +1,3 @@
-
-<?php include _DIR_ . 'Templates/Header.php'; ?>
 <?php foreach ($productList as $productItem) : ?>
     <div class="product">
         <img src="<?php echo $productItem['Image']; ?>" width="50px" alt=""> 
@@ -8,13 +6,5 @@
         <p><?php echo $productItem['Price']; ?></p>
         <p><?php echo $productItem['Description']; ?></p>
     </div>   
-    <?php
-endforeach;
-include _DIR_ . 'Templates/Footer.php';
-?>
-
-
-</body>
-</html>
-
+    <?php endforeach;?>
 

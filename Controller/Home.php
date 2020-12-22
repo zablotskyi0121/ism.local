@@ -8,7 +8,7 @@ class Home {
 
         $categoryURL = 'Category';
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('/View/home.php', ['Category' => $categoryURL]);
+        $renderer = $renderer->render('/Layout/home.php', ['Category' => $categoryURL]);
     }
 
 }
