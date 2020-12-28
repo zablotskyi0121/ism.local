@@ -1,3 +1,6 @@
+<head></head>
+<body>
+    <div class = menu-link>
 <?php foreach ($productList as $productItem) : ?>
     <div class="product">
         <img src="<?php echo $productItem['Image']; ?>" width="50px" alt=""> 
@@ -7,4 +10,4 @@
         <p><?php echo htmlentities($productItem['Description'], ENT_QUOTES); ?></p>
     </div>   
     <?php endforeach;?>
-
+    </div>
