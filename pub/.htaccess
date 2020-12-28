@@ -7,3 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 
 RewriteRule ^(.+) index.php?url=$1 [QSA,L]
+
+<IfModule mod_alias.c>
+    RedirectMatch 403 favicon.ico
+</IfModule>

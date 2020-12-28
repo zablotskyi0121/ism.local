@@ -3,12 +3,14 @@
 namespace Controller;
 
 class Home {
+    
+    public $template;
 
     public function actionHome() {
-
-        $categoryURL = 'Category';
+       
+        $templatePath = 'Template';
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('/Layout/home.php', ['Category' => $categoryURL]);
+        $renderer = $renderer->render('/Layout/home.php', ['Template' => $templatePath]);
     }
 
 }

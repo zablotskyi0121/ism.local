@@ -2,8 +2,6 @@
 
 namespace System;
 
-use Controller\Home;
-
 class Router {
 
     const CONTROLLER_PATH = '\\Controller\\';
@@ -13,6 +11,7 @@ class Router {
         $controllerName = 'Home';
         $modelName = 'Home';
         $action = 'actionHome';
+        $errorController = 'Error404';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         if (!empty($routes[1])) {
@@ -22,19 +21,20 @@ class Router {
             $action = 'action' . ucfirst($routes[2]);
         }
         $controllerPath = self::CONTROLLER_PATH . $controllerName;
+
+        if (class_exists($controllerPath)) {
+            $controllerPath = self::CONTROLLER_PATH . $controllerName;
+        } else {
+            $controllerPath = self::CONTROLLER_PATH . $errorController;
+            $action = \Controller\Error404::page404();
+        }
         $controller = new $controllerPath();
+
         if (method_exists($controller, $action)) {
             $controller->$action();
         } else {
-            Route::ErrorPage404();
+            
         }
-    }
-
-    function ErrorPage404() {
-        $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-        header('HTTP/1.1 404 Not Found');
-        header("Status: 404 Not Found");
-        header('Location:' . $host . '404');
     }
 
 }
