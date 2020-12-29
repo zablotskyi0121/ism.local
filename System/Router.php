@@ -11,7 +11,14 @@ class Router {
         $controllerName = 'Home';
         $modelName = 'Home';
         $action = 'actionHome';
-        $errorController = 'Error404';
+        $error404Controller = 'Error404';
+        $error503Controller = 'Error503';
+
+
+        if (http_response_code() == 503) {
+            $controllerPath = self::CONTROLLER_PATH . $error503Controller;
+            $action = \Controller\Error503::page503();
+        }
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         if (!empty($routes[1])) {
@@ -25,7 +32,7 @@ class Router {
         if (class_exists($controllerPath)) {
             $controllerPath = self::CONTROLLER_PATH . $controllerName;
         } else {
-            $controllerPath = self::CONTROLLER_PATH . $errorController;
+            $controllerPath = self::CONTROLLER_PATH . $error404Controller;
             $action = \Controller\Error404::page404();
         }
         $controller = new $controllerPath();
