@@ -15,7 +15,9 @@ class Db {
         try {
             self::$_instance = new \PDO("mysql:dbname=$dbname;host=$server", $username, $password);
         } catch (\PDOException $ex) {
-            exit('Connection failed: ' . $ex->getMessage());
+            $ex = new \Controller\Error503();
+            $ex->page503();
+            die();
         }
     }
 
