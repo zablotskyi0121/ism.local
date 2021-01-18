@@ -9,7 +9,7 @@ class Product {
 
         $productList = \Model\Product::getAllProduct();
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('/Layout/productList.phtml', ['productList' => $productList]);
+        $renderer = $renderer->render('POP', ['productList' => $productList]);
     }
 
 }
