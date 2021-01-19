@@ -2,19 +2,22 @@
 <body>
     <div class = menu-link>
 
- <?php if(count($searchResult) > 0){       
- foreach ($searchResult as $productItem) : ?>
-            <div class="product">
-                <text "Serach results:"/>
-                <img src="<?php echo $productItem['Image']; ?>" width="50px" alt=""> 
-                <h1 class="Name"><a href="#"><?php echo htmlentities($productItem['Name'], ENT_QUOTES); ?></a></h1>
-                <p><?php echo htmlentities($productItem['Id'], ENT_QUOTES); ?></p>
-                <p><?php echo htmlentities($productItem['Price'], ENT_QUOTES); ?></p>
-                <p><?php echo htmlentities($productItem['Description'], ENT_QUOTES); ?></p>
-            </div>   
-<?php endforeach;
- } else {
-     echo 'No results were found for your request.';     
-}?>
+        <?php if (count($searchResult) > 0) {
+            foreach ($searchResult as $productItem) :
+                ?>
+                <div class="product">
+                    <text "Search results:"/>
+                    <img src="<?php echo $productItem['Image']; ?>" width="50px" alt=""> 
+                    <h1 class="Name"><a href="#"><?php echo htmlentities($productItem['Name'], ENT_QUOTES); ?></a></h1>
+                    <p><?php echo htmlentities($productItem['Id'], ENT_QUOTES); ?></p>
+                    <p><?php echo htmlentities($productItem['Price'], ENT_QUOTES); ?></p>
+                    <p><?php echo htmlentities($productItem['Description'], ENT_QUOTES); ?></p>
+                </div>   
+            <?php
+            endforeach;
+        } else {
+            echo 'No results were found for your request.';
+        }
+        ?>
     </div>
 

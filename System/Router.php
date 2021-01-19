@@ -13,7 +13,9 @@ class Router {
         $action = 'actionHome';
         $error404Controller = 'Error404';
 
-        $routes = explode('/', $_SERVER['REQUEST_URI']);
+        $routesWithParameter = explode('?', $_SERVER['REQUEST_URI']);
+        $routesWithParameter = $routesWithParameter[0];
+        $routes = explode('/', $routesWithParameter);
         if (!empty($routes[1])) {
             $controllerName = ucfirst($routes[1]);
         }
@@ -34,7 +36,7 @@ class Router {
             if (method_exists($controller, $action)) {
                 $controller->$action();
             } else {
-                throw new \Exception($controller, $action);
+                throw new \Exception('Router');
             }
         } catch (\Exception $e) {
             $controller = new \Controller\Error503();

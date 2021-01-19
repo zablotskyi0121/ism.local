@@ -8,7 +8,6 @@ class Search {
 
         $_instance = \System\Db::getInstance()->getInstance();
         $productList = array();
-
         $result = $_instance->query("SELECT * FROM Ism.products WHERE SKU like '%$keyword%' OR Name like '%$keyword%' OR Description like '%$keyword%'");
         $i = 0;
         while ($phones = $result->fetch()) {
