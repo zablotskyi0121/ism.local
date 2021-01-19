@@ -13,5 +13,24 @@ function appAutoload($class) {
 
 spl_autoload_register('appAutoload');
 
+function ErrorHandler($errno, $errmsg, $errfile, $errline) {
+    $controller = new \Controller\Error503();
+    $controller->page503();
+    error_log($errfile, $errline);
+    die();
+    return true;
+}
+
+function fatalErrorHandler() {
+    if (!empty($error = error_get_last() AND $error['type'] & (E_ERROR | E_PARSE | E_COMPILE_ERROR | E_CORE_ERROR))) {
+        ob_get_clean();
+        echo $error;
+        die();
+    }
+}
+
+set_error_handler('ErrorHandler');
+register_shutdown_function('fatalErrorHandler');
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
