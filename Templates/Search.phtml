@@ -2,8 +2,8 @@
 <body>
     <div class = menu-link>
 
-        
-<?php foreach ($searchResult as $productItem) : ?>
+ <?php if(count($searchResult) > 0){       
+ foreach ($searchResult as $productItem) : ?>
             <div class="product">
                 <text "Serach results:"/>
                 <img src="<?php echo $productItem['Image']; ?>" width="50px" alt=""> 
@@ -12,6 +12,9 @@
                 <p><?php echo htmlentities($productItem['Price'], ENT_QUOTES); ?></p>
                 <p><?php echo htmlentities($productItem['Description'], ENT_QUOTES); ?></p>
             </div>   
-<?php endforeach; ?>
+<?php endforeach;
+ } else {
+     echo 'No results were found for your request.';     
+}?>
     </div>
 
