@@ -16,7 +16,7 @@ spl_autoload_register('appAutoload');
 function ErrorHandler($errno, $errmsg, $errfile, $errline) {
     $controller = new \Controller\Error503();
     $controller->page503();
-    error_log($errfile, $errline);
+    error_log($errfile, $errline, $errmsg);
     die();
     return true;
 }
@@ -24,8 +24,8 @@ function ErrorHandler($errno, $errmsg, $errfile, $errline) {
 function fatalErrorHandler() {
     if (!empty($error = error_get_last() AND $error['type'] & (E_ERROR | E_PARSE | E_COMPILE_ERROR | E_CORE_ERROR))) {
         ob_get_clean();
-        echo $error;
-        die();
+        $controller = new \Controller\Error503();
+        $controller->page503();
     }
 }
 

@@ -10,7 +10,6 @@ class Search {
         $productSearch = new \Model\Search();
         $searchResult = $productSearch->productSearch($keyword);
         $renderer = new \System\Renderer();
-
         $renderer = $renderer->render('Search', ['searchResult' => $searchResult]);
     }
 
