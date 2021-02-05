@@ -1,0 +1,46 @@
+<section>
+    <div class="container">
+        <div class="row">
+
+            <br/>
+
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="/admin/cabinet">Cabinet</a></li>
+                    <li class="active">Manage product's</li>
+                </ol>
+            </div>
+
+            <a href="/admin/product/create" class="btn btn-default back"><i class="fa fa-plus"></i> Add product </a>
+
+            <h4>Products list</h4>
+
+            <br/>
+
+            <table class="table-bordered table-striped table">
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>SKU</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <?php foreach ($productList as $productItem): ?>
+                    <tr>
+                        <td><?php echo $productItem['Id']; ?></td>
+                        <td><img src=<?php echo $productItem['Image']; ?>" width="50px" alt=""></td>
+                        <td><?php echo $productItem['SKU']; ?></td>
+                        <td><?php echo $productItem['Name']; ?></td>
+                        <td><?php echo $productItem['Price']; ?></td>  
+                        <td><a href="/admin/product/update/<?php echo $productItem['Id']; ?>" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td><a href="/admin/product/delete/<?php echo $productItem['Id']; ?>" title="Delete"><i class="fa fa-times"></i></a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+        </div>
+    </div>
+</section>
+
