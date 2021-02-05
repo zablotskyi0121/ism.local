@@ -10,7 +10,7 @@ class Admin {
         $password = false;
 
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Login', ['email' => $email, 'password' => $password,]);
+        $renderer = $renderer->render('Login', ['email' => $email, 'password' => $password,]);
 
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
@@ -35,11 +35,6 @@ class Admin {
                 header("Location: /admin/cabinet");
             }
         }
-    }
-
-    public function actionCabinet() {
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Cabinet');
     }
 
 }
