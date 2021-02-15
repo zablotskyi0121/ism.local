@@ -11,6 +11,7 @@ class Router {
         $controllerName = 'Home';
         $modelName = 'Home';
         $action = 'actionHome';
+        $parameter = '';
         $error404Controller = 'Error404';
 
         $routesWithParameter = explode('?', $_SERVER['REQUEST_URI']);
@@ -21,6 +22,9 @@ class Router {
         }
         if (!empty($routes[2])) {
             $action = 'action' . ucfirst($routes[2]);
+        }
+        if (!empty($routes[3])) {
+            $parameter = $routes[3];
         }
         $controllerPath = self::CONTROLLER_PATH . $controllerName;
 
@@ -34,7 +38,7 @@ class Router {
         $controller = new $controllerPath();
         try {
             if (method_exists($controller, $action)) {
-                $controller->$action();
+                $controller->$action($parameter);
             } else {
                 throw new \Exception('Router');
             }

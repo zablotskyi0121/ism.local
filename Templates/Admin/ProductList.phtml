@@ -11,7 +11,7 @@
                 </ol>
             </div>
 
-            <a href="/admin/product/create" class="btn btn-default back"><i class="fa fa-plus"></i> Add product </a>
+            <a href="/products/create" class="btn btn-default back"><i class="fa fa-plus"></i> Add product </a>
 
             <h4>Products list</h4>
 
@@ -29,13 +29,13 @@
                 </tr>
                 <?php foreach ($productList as $productItem): ?>
                     <tr>
-                        <td><?php echo $productItem['Id']; ?></td>
-                        <td><img src=<?php echo $productItem['Image']; ?>" width="50px" alt=""></td>
-                        <td><?php echo $productItem['SKU']; ?></td>
-                        <td><?php echo $productItem['Name']; ?></td>
-                        <td><?php echo $productItem['Price']; ?></td>  
-                        <td><a href="/admin/product/update/<?php echo $productItem['Id']; ?>" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a href="/admin/product/delete/<?php echo $productItem['Id']; ?>" title="Delete"><i class="fa fa-times"></i></a></td>
+                        <td><?php echo $productItem['id']; ?></td>
+                        <td><img src="<?php echo $productItem['image']; ?>" width="50px" alt=""> </td>
+                        <td><?php echo $productItem['sku']; ?></td>
+                        <td><?php echo $productItem['name']; ?></td>
+                        <td><?php echo $productItem['price']; ?></td>  
+                        <td><a href="/products/update/<?php echo $productItem['id']; ?>" title="Edit">Edit</td>
+                        <td><a href="/products/delete/<?php echo $productItem['id']; ?>" title="Delete">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

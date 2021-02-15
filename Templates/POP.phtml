@@ -3,11 +3,11 @@
     <div class = menu-link>
 <?php foreach ($productList as $productItem) : ?>
             <div class="product">
-                <img src="<?php echo $productItem['Image']; ?>" width="50px" alt=""> 
-                <h1 class="Name"><a href="#"><?php echo htmlentities($productItem['Name'], ENT_QUOTES); ?></a></h1>
-                <p><?php echo htmlentities($productItem['Id'], ENT_QUOTES); ?></p>
-                <p><?php echo htmlentities($productItem['Price'], ENT_QUOTES); ?></p>
-                <p><?php echo htmlentities($productItem['Description'], ENT_QUOTES); ?></p>
+                <img src="<?php echo $productItem['image']; ?>" width="50px" alt=""> 
+                <h1 class="Name"><a href="#"><?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></a></h1>
+                <p><?php echo htmlentities($productItem['id'], ENT_QUOTES); ?></p>
+                <p><?php echo htmlentities($productItem['price'], ENT_QUOTES); ?></p>
+                <p><?php echo htmlentities($productItem['description'], ENT_QUOTES); ?></p>
             </div>   
     <?php endforeach;?>
     </div>

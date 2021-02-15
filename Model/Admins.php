@@ -1,23 +1,13 @@
 <?php
+
 namespace Model;
 
-session_start();
+class Admins {
 
-
-class User {
-
-    public static function checkLogged() {
-        if (isset($_SESSION['user'])) {
-            return $_SESSION['user'];
-        }
-
-        header("Location: /admin/login");
-    }
-
-    public static function getUserById($id) {
+     public static function getUserById($id) {
         $db = \System\Db::getInstance()->getInstance();
 
-        $result = $db->prepare('SELECT * FROM users WHERE id = :id');
+        $result = $db->prepare('SELECT * FROM admins WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
 
         $result->setFetchMode(\PDO::FETCH_ASSOC);
@@ -29,7 +19,7 @@ class User {
 
         $db = \System\Db::getInstance()->getInstance();
 
-        $result = $db->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
+        $result = $db->prepare('SELECT * FROM admins WHERE email = :email AND password = :password');
         $result->bindParam(':email', $email, \PDO::PARAM_STR);
         $result->bindParam(':password', $password, \PDO::PARAM_STR);
         $result->execute();
@@ -43,6 +33,8 @@ class User {
     }
 
     public static function auth($userId) {
+
+        session_start();
         $_SESSION['user'] = $userId;
     }
 

@@ -4,7 +4,7 @@ namespace System;
 
 class Db {
 
-    private static $_instance = null;
+    private static $db = null;
 
     private function __construct() {
         $username = \System\ConfigManager::getConfig('db\username');
@@ -13,7 +13,7 @@ class Db {
         $dbname = \System\ConfigManager::getConfig('db\dbName');
 
         try {
-            self::$_instance = new \PDO("mysql:dbname=$dbname;host=$server", $username, $password);
+            self::$db = new \PDO("mysql:dbname=$dbname;host=$server", $username, $password);
         } catch (\PDOException $ex) {
             $controller = new \Controller\Error503();
             $controller->page503();
@@ -24,8 +24,8 @@ class Db {
 
     public static function getInstance() {
 
-        if (self::$_instance != null) {
-            return self::$_instance;
+        if (self::$db != null) {
+            return self::$db;
         }
 
         return new self;
