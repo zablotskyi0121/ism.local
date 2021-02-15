@@ -2,10 +2,10 @@
 
 namespace Controller;
 
-class Products extends \System\AdminBase {
+class Products {
 
     public function actionIndex() {
-        
+
         $productList = \Model\Product::getAllProduct();
         $renderer = new \System\Renderer();
         $renderer = $renderer->render('Admin/ProductList', ['productList' => $productList]);
@@ -24,24 +24,15 @@ class Products extends \System\AdminBase {
             $options['sku'] = $_POST['sku'];
             $options['description'] = $_POST['description'];
 
-            $errors = false;
+            $id = \Model\Product::createProduct($options);
 
-            if (!isset($options['name']) || empty($options['name'])) {
-                echo 'Please fill fields';
-            }
+            if ($id) {
+                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/{$id}.jpg");
+                }
+            };
 
-            if ($errors == false) {
-
-                $id = \Model\Product::createProduct($options);
-
-                if ($id) {
-                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                        move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/{$id}.jpg");
-                    }
-                };
-
-                header("Location: /products/index");
-            }
+            header("Location: /products/index");
         }
 
         return true;
@@ -59,6 +50,7 @@ class Products extends \System\AdminBase {
             $options['name'] = $_POST['name'];
             $options['sku'] = $_POST['sku'];
             $options['price'] = $_POST['price'];
+            $options['qty'] = $_POST['qty'];
             $options['description'] = $_POST['description'];
 
             if (\Model\Product::updateProductById($id, $options)) {

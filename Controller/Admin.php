@@ -19,7 +19,7 @@ class Admin {
             $userId = \Model\Admins::checkUserData($email, $password);
 
             if ($userId == false) {
-                echo 'Incorrect login information';
+                echo 'The account login was incorrect. Check your credential.';
             } else {
                 \Model\Admins::auth($userId);
 

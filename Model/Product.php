@@ -48,7 +48,7 @@ class Product {
     public static function updateProductById($id, $options) {
         $db = \System\Db::getInstance();
 
-        $result = $db->prepare('UPDATE products SET (name = :name, sku = :sku, price = :price, description = :description) WHERE id = :id');
+        $result = $db->prepare('UPDATE products SET name = :name, sku = :sku, qty=:qty, price = :price, description = :description WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         $result->bindParam(':name', $options['name'], \PDO::PARAM_STR);
         $result->bindParam(':qty', $options['qty'], \PDO::PARAM_INT);
@@ -68,8 +68,7 @@ class Product {
         $result->bindParam(':qty', $options['qty'], \PDO::PARAM_INT);
         $result->bindParam(':sku', $options['sku'], \PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], \PDO::PARAM_STR);
-        $result->execute();
-             if ($result->execute()) {
+        if ($result->execute()) {
             return $db->lastInsertId();
         }
         echo 'error';
