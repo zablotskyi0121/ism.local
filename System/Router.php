@@ -30,9 +30,12 @@ class Router {
 
         if (class_exists($controllerPath)) {
             $controllerPath = self::CONTROLLER_PATH . $controllerName;
+        } elseif(!class_exists( $controllerPath . 'Admin')) {
+            $controllerPath = self::CONTROLLER_PATH . 'Admin\\'. $controllerName;
         } else {
             $controllerPath = self::CONTROLLER_PATH . $error404Controller;
             $action = \Controller\Error404::page404();
+            die();
         }
 
         $controller = new $controllerPath();

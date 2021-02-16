@@ -16,8 +16,9 @@ spl_autoload_register('appAutoload');
 
 function ErrorHandler($errno, $errmsg, $filename, $linenum) {
     
-    $controller = new \Controller\Error503();
-    $controller->page503();
+//    $controller = new \Controller\Error503();
+//    $controller->page503();
+    echo 'zzz';
     $err = "$errmsg = $filename = $linenum\r\n";
     error_log($err);
     die();

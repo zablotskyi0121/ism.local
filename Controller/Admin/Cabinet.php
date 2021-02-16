@@ -1,14 +1,13 @@
 <?php
 
-namespace Controller;
+namespace Controller\Admin;
 
-class Admin {
+class Cabinet {
 
     public function actionLogin() {
 
         $email = false;
         $password = false;
-
         $renderer = new \System\Renderer();
         $renderer = $renderer->render('Admin/Login', ['email' => $email, 'password' => $password,]);
 
@@ -23,7 +22,7 @@ class Admin {
             } else {
                 \Model\Admins::auth($userId);
 
-                header("Location: /admin/cabinet");
+                header("Location: /cabinet/cabinet");
             }
         }
     }
@@ -35,7 +34,7 @@ class Admin {
             $renderer = new \System\Renderer();
             $renderer = $renderer->render('Admin/Cabinet');
         } else {
-            header("Location: /admin/login");
+            header("Location: /cabinet/login");
         }
     }
 
@@ -44,7 +43,7 @@ class Admin {
         session_start();
         unset($_SESSION["user"]);
 
-        header("Location: /admin/login");
+        header("Location: /cabinet/login");
     }
 
 }
