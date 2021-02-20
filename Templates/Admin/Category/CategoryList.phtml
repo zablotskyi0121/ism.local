@@ -11,7 +11,7 @@
                 </ol>
             </div>
 
-            <a href="/admin/category/create" class="btn btn-default back"><i class="fa fa-plus"></i> Add category</a>
+            <a href="/admin/categories/create" class="btn btn-default back"><i class="fa fa-plus"></i> Add category</a>
 
             <h4>Category list</h4>
 
@@ -32,8 +32,8 @@
                         <td><?php echo $category['name']; ?></td>
                         <td><?php echo $category['description']; ?></td>
                         <td><img src="<?php echo $category['image']; ?>" width="50px" alt=""></td>  
-                        <td><a href="/admin/category/update/<?php echo $category['id']; ?>" title="Edit">Edit</a></td>
-                        <td><a href="/admin/category/delete/<?php echo $category['id']; ?>" title="Delete">Delete</a></td>
+                        <td><a href="/admin/categories/update/<?php echo $category['id']; ?>" title="Edit">Edit</a></td>
+                        <td><a href="/admin/categories/delete/<?php echo $category['id']; ?>" title="Delete">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

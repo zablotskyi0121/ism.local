@@ -1,0 +1,44 @@
+<section>
+    <div class="container">
+        <div class="row">
+
+            <br/>
+
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="/admin/cabinet/cabinet">Cabinet</a></li>        
+                    <li><a href="/admin/categories/index">Manage category</a></li>
+                    <li class="active">Update category</li>
+                </ol>
+            </div>
+
+
+            <h4>Update category "<?php echo $category['name']; ?>"</h4>
+
+            <br/>
+
+            <div class="col-lg-4">
+                <div class="login-form">
+                    <form action="#" method="post" enctype="multipart/form-data">
+
+                        <p>Name</p>
+                        <input type="text" name="name" placeholder="" value="<?php echo $category['name']; ?>">
+
+                        <p>Description</p>
+                        <input type="text" name="description" placeholder="" value="<?php echo $category['description']; ?>">
+
+                        <p>Image</p>
+                        <img src="<?php echo \Model\Admin\Products::getImage($category['id']); ?>" width="200" alt="" />
+                        <input type="file" name="image" placeholder="" value="<?php echo $category['image']; ?>">
+
+                        <br><br>
+
+                        <input type="submit" name="submit" class="btn btn-default" value="Save">
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
