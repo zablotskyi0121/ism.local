@@ -6,7 +6,7 @@ class Products {
 
     public function actionIndex() {
 
-        $productList = \Model\Product::getAllProduct();
+        $productList = \Model\Admin\Products::getAllProduct();
         $renderer = new \System\Renderer();
         $renderer = $renderer->render('Admin/ProductList', ['productList' => $productList]);
     }
@@ -24,7 +24,7 @@ class Products {
             $options['sku'] = $_POST['sku'];
             $options['description'] = $_POST['description'];
 
-            $id = \Model\Product::createProduct($options);
+            $id = \Model\Admin\Products::createProduct($options);
 
             if ($id) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
@@ -40,7 +40,7 @@ class Products {
 
     public function actionUpdate($id) {
 
-        $product = \Model\Product::getProductById($id);
+        $product = \Model\Admin\Products::getProductById($id);
 
         $renderer = new \System\Renderer();
         $renderer = $renderer->render('Admin/UpdateProduct', ['id' => $id, 'product' => $product]);
@@ -53,7 +53,7 @@ class Products {
             $options['qty'] = $_POST['qty'];
             $options['description'] = $_POST['description'];
 
-            if (\Model\Product::updateProductById($id, $options)) {
+            if (\Model\Admin\Products::updateProductById($id, $options)) {
 
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
 
@@ -74,7 +74,7 @@ class Products {
 
         if (isset($_POST['submit'])) {
 
-            \Model\Product::deleteProductById($id);
+            \Model\Admin\Products::deleteProductById($id);
 
             header("Location: /admin/products/index");
         }

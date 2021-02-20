@@ -37,7 +37,7 @@
                         <textarea name="description"><?php echo $product['description']; ?></textarea>
 
                         <p>Image</p>
-                        <img src="<?php echo \Model\Product::getImage($product['id']); ?>" width="200" alt="" />
+                        <img src="<?php echo \Model\Admin\Products::getImage($product['id']); ?>" width="200" alt="" />
                         <input type="file" name="image" placeholder="" value="<?php echo $product['image']; ?>">
 
                         <br/><br/>
