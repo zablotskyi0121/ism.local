@@ -17,21 +17,36 @@ class Router {
         $routesWithParameter = explode('?', $_SERVER['REQUEST_URI']);
         $routesWithParameter = $routesWithParameter[0];
         $routes = explode('/', $routesWithParameter);
-        if (!empty($routes[1])) {
-            $controllerName = ucfirst($routes[1]);
-        }
-        if (!empty($routes[2])) {
-            $action = 'action' . ucfirst($routes[2]);
-        }
-        if (!empty($routes[3])) {
-            $parameter = $routes[3];
+
+        if (strpos($routesWithParameter, 'admin') !== false) {
+
+            if (!empty($routes[2])) {
+                $controllerName = ucfirst($routes[2]);
+            }
+            if (!empty($routes[3])) {
+                $action = 'action' . ucfirst($routes[3]);
+            }
+            if (!empty($routes[4])) {
+                $parameter = $routes[4];
+            }
+        } else {
+
+            if (!empty($routes[1])) {
+                $controllerName = ucfirst($routes[1]);
+            }
+            if (!empty($routes[2])) {
+                $action = 'action' . ucfirst($routes[2]);
+            }
+            if (!empty($routes[3])) {
+                $parameter = $routes[3];
+            }
         }
         $controllerPath = self::CONTROLLER_PATH . $controllerName;
 
-        if (class_exists($controllerPath)) {
+        if (strpos($routesWithParameter, 'admin') !== false) {
+            $controllerPath = self::CONTROLLER_PATH . 'Admin\\' . $controllerName;
+        } elseif (class_exists($controllerPath)) {
             $controllerPath = self::CONTROLLER_PATH . $controllerName;
-        } elseif(!class_exists( $controllerPath . 'Admin')) {
-            $controllerPath = self::CONTROLLER_PATH . 'Admin\\'. $controllerName;
         } else {
             $controllerPath = self::CONTROLLER_PATH . $error404Controller;
             $action = \Controller\Error404::page404();

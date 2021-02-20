@@ -32,7 +32,7 @@ class Products {
                 }
             };
 
-            header("Location: /products/index");
+            header("Location: /admin/products/index");
         }
 
         return true;
@@ -61,7 +61,7 @@ class Products {
                 }
             }
 
-            header("Location: /products/index");
+            header("Location: /admin/products/index");
         }
 
         return true;
@@ -76,7 +76,7 @@ class Products {
 
             \Model\Product::deleteProductById($id);
 
-            header("Location: /products/index");
+            header("Location: /admin/products/index");
         }
 
         return true;

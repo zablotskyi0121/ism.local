@@ -22,7 +22,7 @@ class Cabinet {
             } else {
                 \Model\Admins::auth($userId);
 
-                header("Location: /cabinet/cabinet");
+                header("Location: /admin/cabinet/cabinet");
             }
         }
     }
@@ -34,7 +34,7 @@ class Cabinet {
             $renderer = new \System\Renderer();
             $renderer = $renderer->render('Admin/Cabinet');
         } else {
-            header("Location: /cabinet/login");
+            header("Location: /admin/cabinet/login");
         }
     }
 
@@ -43,7 +43,7 @@ class Cabinet {
         session_start();
         unset($_SESSION["user"]);
 
-        header("Location: /cabinet/login");
+        header("Location: /admin/cabinet/login");
     }
 
 }

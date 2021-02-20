@@ -6,12 +6,12 @@
 
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="/cabinet/cabinet">Cabinet</a></li>
+                    <li><a href="/admin/cabinet/cabinet">Cabinet</a></li>
                     <li class="active">Manage product's</li>
                 </ol>
             </div>
 
-            <a href="/products/create" class="btn btn-default back"><i class="fa fa-plus"></i> Add product </a>
+            <a href="/admin/products/create" class="btn btn-default back"><i class="fa fa-plus"></i> Add product </a>
 
             <h4>Products list</h4>
 
@@ -34,8 +34,8 @@
                         <td><?php echo $productItem['sku']; ?></td>
                         <td><?php echo $productItem['name']; ?></td>
                         <td><?php echo $productItem['price']; ?></td>  
-                        <td><a href="/products/update/<?php echo $productItem['id']; ?>" title="Edit">Edit</td>
-                        <td><a href="/products/delete/<?php echo $productItem['id']; ?>" title="Delete">Delete</a></td>
+                        <td><a href="/admin/products/update/<?php echo $productItem['id']; ?>" title="Edit">Edit</td>
+                        <td><a href="/admin/products/delete/<?php echo $productItem['id']; ?>" title="Delete">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
