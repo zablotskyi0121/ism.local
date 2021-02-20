@@ -68,6 +68,7 @@ class Products {
         $result->bindParam(':qty', $options['qty'], \PDO::PARAM_INT);
         $result->bindParam(':sku', $options['sku'], \PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], \PDO::PARAM_STR);
+
         if ($result->execute()) {
             return $db->lastInsertId();
         }

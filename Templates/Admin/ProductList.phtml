@@ -30,7 +30,7 @@
                 <?php foreach ($productList as $productItem): ?>
                     <tr>
                         <td><?php echo $productItem['id']; ?></td>
-                        <td><img src="<?php echo $productItem['image']; ?>" width="50px" alt=""> </td>
+                        <td><img src="<?php echo \Model\Admin\Products::getImage($productItem['id']); ?>" width="50px" alt=""> </td>
                         <td><?php echo $productItem['sku']; ?></td>
                         <td><?php echo $productItem['name']; ?></td>
                         <td><?php echo $productItem['price']; ?></td>  
