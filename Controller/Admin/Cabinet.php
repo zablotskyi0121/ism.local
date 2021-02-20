@@ -13,7 +13,7 @@ class Cabinet {
 
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $password = md5($_POST['password']);
 
             $userId = \Model\Admin\Admins::checkUserData($email, $password);
 

@@ -4,7 +4,7 @@ namespace Model\Admin;
 
 class Admins {
 
-     public static function getUserById($id) {
+    public static function getUserById($id) {
         $db = \System\Db::getInstance()->getInstance();
 
         $result = $db->prepare('SELECT * FROM admins WHERE id = :id');
@@ -20,12 +20,11 @@ class Admins {
         $db = \System\Db::getInstance()->getInstance();
 
         $result = $db->prepare('SELECT * FROM admins WHERE email = :email AND password = :password');
+
         $result->bindParam(':email', $email, \PDO::PARAM_STR);
         $result->bindParam(':password', $password, \PDO::PARAM_STR);
         $result->execute();
-
         $user = $result->fetch();
-
         if ($user) {
             return $user['id'];
         }
