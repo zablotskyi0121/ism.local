@@ -1,0 +1,11 @@
+<head></head>
+<body>
+    <div class="category-list">
+        <?php foreach ($category as $categoryItem) : ?>
+            <h4 class="menu-link">
+                <a href="/category/category/<?php echo $categoryItem['id']; ?>">
+                    <?php echo $categoryItem['name']; ?>
+                </a>
+            </h4>
+        <?php endforeach; ?>
+    </div>
