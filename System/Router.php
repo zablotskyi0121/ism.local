@@ -20,27 +20,19 @@ class Router {
 
         if (strpos(_URL_, _ADMIN_URL_) !== false) {
 
-            if (!empty($routes[2])) {
-                $controllerName = ucfirst($routes[2]);
-            }
-            if (!empty($routes[3])) {
-                $action = 'action' . ucfirst($routes[3]);
-            }
-            if (!empty($routes[4])) {
-                $parameter = $routes[4];
-            }
-        } else {
-
-            if (!empty($routes[1])) {
-                $controllerName = ucfirst($routes[1]);
-            }
-            if (!empty($routes[2])) {
-                $action = 'action' . ucfirst($routes[2]);
-            }
-            if (!empty($routes[3])) {
-                $parameter = $routes[3];
-            }
+            array_shift($routes);
         }
+
+        if (!empty($routes[1])) {
+            $controllerName = ucfirst($routes[1]);
+        }
+        if (!empty($routes[2])) {
+            $action = 'action' . ucfirst($routes[2]);
+        }
+        if (!empty($routes[3])) {
+            $parameter = $routes[3];
+        }
+
         $controllerPath = self::CONTROLLER_PATH . $controllerName;
 
         if (strpos(_URL_, _ADMIN_URL_) !== false) {
