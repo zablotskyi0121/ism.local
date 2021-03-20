@@ -10,7 +10,6 @@ class Cabinet {
         $password = false;
         $renderer = new \System\Renderer();
         $renderer = $renderer->render('Admin/Login', ['email' => $email, 'password' => $password,]);
-
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
             $password = md5($_POST['password']);

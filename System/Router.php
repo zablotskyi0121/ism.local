@@ -18,7 +18,7 @@ class Router {
         $routesWithParameter = $routesWithParameter[0];
         $routes = explode('/', $routesWithParameter);
 
-        if (strpos($routesWithParameter, 'admin') !== false) {
+        if (strpos(_URL_, _ADMIN_URL_) !== false) {
 
             if (!empty($routes[2])) {
                 $controllerName = ucfirst($routes[2]);
@@ -43,7 +43,7 @@ class Router {
         }
         $controllerPath = self::CONTROLLER_PATH . $controllerName;
 
-        if (strpos($routesWithParameter, 'admin') !== false) {
+        if (strpos(_URL_, _ADMIN_URL_) !== false) {
             $controllerPath = self::CONTROLLER_PATH . 'Admin\\' . $controllerName;
         } elseif (class_exists($controllerPath)) {
             $controllerPath = self::CONTROLLER_PATH . $controllerName;

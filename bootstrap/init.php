@@ -2,6 +2,8 @@
 
 define('_DIR_PUB_', getcwd());
 define('_DIR_', realpath('../') . DIRECTORY_SEPARATOR);
+define('_URL_', $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
+define('_ADMIN_URL_', $_SERVER['SERVER_NAME'] . '/admin');
 
 function appAutoload($class) {
     

@@ -4,14 +4,14 @@ namespace Controller;
 
 class Category {
 
-    public function actionIndex() {
+    public function actionList() {
 
-        $category = \Model\Category::getCategoriesList();
+        $categories = \Model\Category::getCategoriesList();
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Menu', ['category' => $category]);
+        $renderer = $renderer->render('Menu', ['categories' => $categories]);
     }
     
-    public function actionCategory($categoryId) {
+    public function actionView($categoryId) {
         
         $category = \Model\Category::getCategoriesList();
         $productList = \Model\Product::getAllProduct();
