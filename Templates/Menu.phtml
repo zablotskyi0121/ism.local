@@ -1,11 +1,12 @@
 <head></head>
 <body>
-    <div class="category-list">
+    <div class="menu">
         <?php foreach ($categories as $categoryItem) : ?>
-            <h4 class="menu-link">
-                <a href="/category/category/<?php echo $categoryItem['id']; ?>">
-                    <?php echo $categoryItem['name']; ?>
-                </a>
-            </h4>
+
+            <a class="menu-link" href="/category/view/<?php echo $categoryItem['id']; ?>">
+                <?php echo htmlentities($categoryItem['name'], ENT_QUOTES); ?>
+            </a>
         <?php endforeach; ?>
+        <a class="admin-link" href="/admin/cabinet/login"> Login to admin cabinet</a>
     </div>
+</body>

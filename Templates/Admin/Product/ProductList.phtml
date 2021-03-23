@@ -29,13 +29,13 @@
                 </tr>
                 <?php foreach ($productList as $productItem): ?>
                     <tr>
-                        <td><?php echo $productItem['id']; ?></td>
+                        <td><?php echo htmlentities($productItem['id'], ENT_QUOTES); ?></td>
                         <td><img src="<?php echo \Model\Admin\Products::getImage($productItem['id']); ?>" width="50px" alt=""> </td>
-                        <td><?php echo $productItem['sku']; ?></td>
-                        <td><?php echo $productItem['name']; ?></td>
-                        <td><?php echo $productItem['price']; ?></td>  
-                        <td><a href="/admin/products/update/<?php echo $productItem['id']; ?>" title="Edit">Edit</td>
-                        <td><a href="/admin/products/delete/<?php echo $productItem['id']; ?>" title="Delete">Delete</a></td>
+                        <td><?php echo htmlentities($productItem['sku'], ENT_QUOTES); ?></td>
+                        <td><?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></td>
+                        <td><?php echo htmlentities($productItem['price'], ENT_QUOTES); ?></td>  
+                        <td><a href="/admin/products/update/<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>" title="Edit">Edit</td>
+                        <td><a href="/admin/products/delete/<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>" title="Delete">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

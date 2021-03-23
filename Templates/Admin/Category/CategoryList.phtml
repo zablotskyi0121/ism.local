@@ -28,12 +28,12 @@
                 </tr>
                 <?php foreach ($categoryList as $category): ?>
                     <tr>
-                        <td><?php echo $category['id']; ?></td>
-                        <td><?php echo $category['name']; ?></td>
-                        <td><?php echo $category['description']; ?></td>
+                        <td><?php echo htmlentities($category['id'], ENT_QUOTES); ?></td>
+                        <td><?php echo htmlentities($category['name'], ENT_QUOTES); ?></td>
+                        <td><?php echo htmlentities($category['description'], ENT_QUOTES); ?></td>
                         <td><img src="<?php echo $category['image']; ?>" width="50px" alt=""></td>  
-                        <td><a href="/admin/categories/update/<?php echo $category['id']; ?>" title="Edit">Edit</a></td>
-                        <td><a href="/admin/categories/delete/<?php echo $category['id']; ?>" title="Delete">Delete</a></td>
+                        <td><a href="/admin/categories/update/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Edit">Edit</a></td>
+                        <td><a href="/admin/categories/delete/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Delete">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

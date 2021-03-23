@@ -8,13 +8,13 @@ class Categories {
 
         $categoryList = \Model\Admin\Categories::getCategoriesList();
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/CategoryList', ['categoryList' => $categoryList]);
+        $renderer = $renderer->render('Admin/Category/CategoryList', ['categoryList' => $categoryList], true);
     }
 
     public function actionCreate() {
 
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/CreateCategory');
+        $renderer = $renderer->render('Admin/Category/CreateCategory', [], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -36,7 +36,7 @@ class Categories {
 
         $category = \Model\Admin\Categories::getCategoryById($id);
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/UpdateCategory', ['category' => $category]);
+        $renderer = $renderer->render('Admin/Category/UpdateCategory', ['category' => $category], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -56,7 +56,7 @@ class Categories {
     public function actionDelete($id) {
 
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/DeleteCategory', ['id' => $id]);
+        $renderer = $renderer->render('Admin/Category/DeleteCategory', ['id' => $id], true);
 
         if (isset($_POST['submit'])) {
             \Model\Admin\Categories::deleteCategoryById($id);

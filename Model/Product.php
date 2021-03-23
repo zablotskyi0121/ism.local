@@ -6,7 +6,7 @@ class Product {
 
     public static function getAllProduct() {
 
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
 
         $productList = array();
 

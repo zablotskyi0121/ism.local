@@ -70,7 +70,12 @@ nav .brand-logo {
     text-align: center;
 }
 .menu-link{
-    padding-top: 50px;
+    width: auto;
+    float: left;
+    margin-left: 300px;
+    padding: 22px;
+    color: black;
+
 }
 
 .search {
@@ -82,4 +87,20 @@ nav .brand-logo {
 .header {
     padding: 60px;
     background: #B9C2C4;
+}
+
+.admin-link {
+    float: right;
+    padding: 22px;
+    color: black;
+}
+
+.pop-link {
+    padding: 100px;
+}
+
+.menu{
+    background: cadetblue;
+    width: 100%;
+    height: 70px;
 }

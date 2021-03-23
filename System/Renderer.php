@@ -4,9 +4,9 @@ namespace System;
 
 class Renderer {
 
-    public function render($pageTemplate, $params = array()) {
+    public function render($pageTemplate, $params = array(), $isAdmin = false) {
         extract($params);
-        require_once _DIR_ . '/Layout/Default.php';
+        require_once $isAdmin ? _DIR_ . '/Layout/Admin.php' : _DIR_ . '/Layout/Default.php';
     }
 
 }

@@ -8,13 +8,13 @@ class Products {
 
         $productList = \Model\Admin\Products::getAllProduct();
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Product/ProductList', ['productList' => $productList]);
+        $renderer = $renderer->render('Admin/Product/ProductList', ['productList' => $productList], true);
     }
 
     public function actionCreate() {
 
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Product/CreateProduct');
+        $renderer = $renderer->render('Admin/Product/CreateProduct', [], true);
 
         if (isset($_POST['submit'])) {
 
@@ -43,7 +43,7 @@ class Products {
         $product = \Model\Admin\Products::getProductById($id);
 
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Product/UpdateProduct', ['id' => $id, 'product' => $product]);
+        $renderer = $renderer->render('Admin/Product/UpdateProduct', ['id' => $id, 'product' => $product], true);
 
         if (isset($_POST['submit'])) {
 
@@ -70,7 +70,7 @@ class Products {
     public function actionDelete($id) {
 
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Product/DeleteProduct', ['id' => $id]);
+        $renderer = $renderer->render('Admin/Product/DeleteProduct', ['id' => $id], true);
 
         if (isset($_POST['submit'])) {
 
