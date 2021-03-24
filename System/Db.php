@@ -27,8 +27,8 @@ class Db {
         if (self::$db != null) {
             return self::$db;
         }
-
-        return new self;
+        new Db();
+        return self::$db;
     }
 
 }

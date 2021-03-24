@@ -6,7 +6,7 @@ class Categories {
 
     public static function getCategoriesList() {
 
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
         $result = $db->query('SELECT id, name, description, image FROM categories ORDER BY id ASC');
 
         $categoryList = array();
@@ -23,7 +23,7 @@ class Categories {
 
     public static function createCategory($name, $description) {
 
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
         $result = $db->prepare('INSERT INTO categories (id, name, description) VALUES (NULL, :name, :description)');
         $result->bindParam(':name', $name, \PDO::PARAM_STR);
         $result->bindParam(':description', $description, \PDO::PARAM_STR);
@@ -46,7 +46,7 @@ class Categories {
 
     public static function getCategoryById($id) {
 
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
         $result = $db->prepare('SELECT * FROM categories WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         $result->setFetchMode(\PDO::FETCH_ASSOC);
@@ -56,7 +56,7 @@ class Categories {
 
     public static function deleteCategoryById($id) {
 
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
         $result = $db->prepare('DELETE FROM categories WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         return $result->execute();

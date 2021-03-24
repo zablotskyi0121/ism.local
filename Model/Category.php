@@ -6,7 +6,7 @@ class Category {
 
     public static function getCategoriesList() {
 
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
         $result = $db->query('SELECT id, name FROM categories ORDER BY id ASC');
 
         $categoryList = array();

@@ -5,7 +5,7 @@ namespace Model\Admin;
 class Admins {
 
     public static function getUserById($id) {
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
 
         $result = $db->prepare('SELECT * FROM admins WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
@@ -17,7 +17,7 @@ class Admins {
 
     public static function checkUserData($email, $password) {
 
-        $db = \System\Db::getInstance()->getInstance();
+        $db = \System\Db::getInstance();
 
         $result = $db->prepare('SELECT * FROM admins WHERE email = :email AND password = :password');
 
