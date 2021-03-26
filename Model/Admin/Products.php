@@ -6,7 +6,7 @@ class Products {
 
     public static function getAllProduct() {
 
-        $db = \System\Db::getInstance();
+        $db = \System\Db::getInstance()->getPDO();
 
         $productList = array();
 
@@ -29,7 +29,7 @@ class Products {
 
     public static function getProductById($id) {
 
-        $db = \System\Db::getInstance();
+        $db = \System\Db::getInstance()->getPDO();
         $result = $db->prepare('SELECT * FROM products WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         $result->setFetchMode(\PDO::FETCH_ASSOC);
@@ -38,7 +38,7 @@ class Products {
     }
 
     public static function deleteProductById($id) {
-        $db = \System\Db::getInstance();
+        $db = \System\Db::getInstance()->getPDO();
 
         $result = $db->prepare('DELETE FROM products WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
@@ -46,7 +46,7 @@ class Products {
     }
 
     public static function updateProductById($id, $options) {
-        $db = \System\Db::getInstance();
+        $db = \System\Db::getInstance()->getPDO();
 
         $result = $db->prepare('UPDATE products SET name = :name, sku = :sku, qty=:qty, price = :price, description = :description WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
@@ -60,7 +60,7 @@ class Products {
     }
 
     public static function createProduct($options) {
-        $db = \System\Db::getInstance();
+        $db = \System\Db::getInstance()->getPDO();
 
         $result = $db->prepare('INSERT INTO products (id, sku, qty, name, description, price) VALUES (NULL, :sku, :qty, :name, :description, :price)');
         $result->bindParam(':name', $options['name'], \PDO::PARAM_STR);

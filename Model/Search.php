@@ -6,7 +6,7 @@ class Search {
 
     public function productSearch($keyword) {
 
-        $db= \System\Db::getInstance();
+        $db= \System\Db::getInstance()->getPDO();
         $productList = array();
         $result = $db->query("SELECT * FROM Ism.products WHERE sku like '%$keyword%' OR name like '%$keyword%' OR description like '%$keyword%'");
         $i = 0;

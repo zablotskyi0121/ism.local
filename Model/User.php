@@ -15,7 +15,7 @@ class User {
     }
 
     public static function getUserById($id) {
-        $db = \System\Db::getInstance();
+        $db = \System\Db::getInstance()->getPDO();
 
         $result = $db->prepare('SELECT * FROM users WHERE id = :id');
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
@@ -27,7 +27,7 @@ class User {
 
     public static function checkUserData($email, $password) {
 
-        $db = \System\Db::getInstance();
+        $db = \System\Db::getInstance()->getPDO();
 
         $result = $db->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
         $result->bindParam(':email', $email, \PDO::PARAM_STR);
