@@ -13,8 +13,9 @@ class Categories {
 
     public function actionCreate() {
 
+        $productList = \Model\Admin\Products::getAllProductsForCategory();
         $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/CreateCategory', [], true);
+        $renderer = $renderer->render('Admin/Category/CreateCategory', ['productList' => $productList], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];

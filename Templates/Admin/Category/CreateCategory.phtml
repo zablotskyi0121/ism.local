@@ -27,6 +27,16 @@
                         <p>Description</p>
                         <input type="text" name="description" placeholder="" value="">
 
+                        <p>Products per category</p>
+                        <select multiple="multiple" name="productList[]">
+                            <?php foreach ($productList as $productItem) : ?>
+                                <div class="product">
+                                    <option value="<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>">
+                                    <?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></option>
+                                </div>   
+                            <?php endforeach; ?>
+                        </select>
+
                         <p>Image</p>
                         <input type="file" name="image" placeholder="" value="">
 

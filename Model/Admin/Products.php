@@ -26,6 +26,21 @@ class Products {
 
         return $productList;
     }
+    
+    public static function getAllProductsForCategory() {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $productList = array();
+        $result = $db->query('SELECT id, name FROM products ORDER BY id ASC');
+        $i = 0;
+        while ($phones = $result->fetch()) {
+            $productList[$i]['id'] = $phones['id'];
+            $productList[$i]['name'] = $phones['name'];
+            $i++;
+        }
+
+        return $productList;
+    }
 
     public static function getProductById($id) {
 
