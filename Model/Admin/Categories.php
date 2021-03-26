@@ -61,5 +61,20 @@ class Categories {
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         return $result->execute();
     }
+    
+    public static function getImage($id) {
+        $noImage = 'no-image.jpg';
+
+        $path = '/media/images/category/';
+
+        $pathToCategoryImage = $path . $id . '.jpg';
+
+        if (file_exists(_DIR_PUB_ . $pathToCategoryImage)) {
+
+            return $pathToCategoryImage;
+        }
+
+        return $path . $noImage;
+    }
 
 }

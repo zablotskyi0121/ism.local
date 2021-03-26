@@ -31,7 +31,7 @@
                         <td><?php echo htmlentities($category['id'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($category['name'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($category['description'], ENT_QUOTES); ?></td>
-                        <td><img src="<?php echo $category['image']; ?>" width="50px" alt=""></td>  
+                        <td><img src="<?php echo \Model\Admin\Categories::getImage($category['id']); ?>" width="50px" alt=""></td>  
                         <td><a href="/admin/categories/update/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Edit">Edit</a></td>
                         <td><a href="/admin/categories/delete/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Delete">Delete</a></td>
                     </tr>

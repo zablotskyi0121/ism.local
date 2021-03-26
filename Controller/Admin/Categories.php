@@ -24,7 +24,7 @@ class Categories {
 
             if ($id) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                    move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/{$id}.jpg");
+                    move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/category/{$id}.jpg");
                 }
             };
 
@@ -45,7 +45,7 @@ class Categories {
             if (\Model\Admin\Categories::updateCategoryById($id, $name, $description)) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
 
-                    move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/{$id}.jpg");
+                    move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/category/{$id}.jpg");
                 }
             }
 
