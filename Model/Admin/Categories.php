@@ -61,7 +61,15 @@ class Categories {
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         return $result->execute();
     }
-    
+
+    public static function deleteCategoryProductRelation($id) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('DELETE FROM category_products WHERE categoryId = :id');
+        $result->bindParam(':id', $id, \PDO::PARAM_INT);
+        return $result->execute();
+    }
+
     public static function getImage($id) {
         $noImage = 'no-image.jpg';
 

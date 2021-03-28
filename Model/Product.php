@@ -27,4 +27,25 @@ class Product {
         return $productList;
     }
 
+    public static function getProductsPerCategoty($categoryId) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $product = $db->query('SELECT * FROM `products` JOIN `category_products` ON products.id = category_products.productId WHERE products.id = category_products.productId AND category_products.categoryId = ' . $categoryId . ' ');
+
+        $productList = [];
+        $i = 0;
+        while ($phones = $product->fetch()) {
+            $productList[$i]['id'] = $phones['id'];
+            $productList[$i]['sku'] = $phones['sku'];
+            $productList[$i]['name'] = $phones['name'];
+            $productList[$i]['price'] = $phones['price'];
+            $productList[$i]['description'] = $phones['description'];
+            $productList[$i]['image'] = $phones['image'];
+
+            $i++;
+        }
+
+        return $productList;
+    }
+
 }

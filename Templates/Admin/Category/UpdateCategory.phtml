@@ -28,7 +28,14 @@
                         <input type="text" name="description" placeholder="" value="<?php echo htmlentities($category['description'], ENT_QUOTES); ?>">
 
                         <p>Products per category</p>
-                        
+                        <select class = "multiple-block" multiple="multiple" name="productList[]">
+                            <?php foreach ($productList as $productItem) : ?>
+                                <option value="<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>"
+                                <?php echo in_array($productItem['id'], $productIdArray) ? 'selected' : '' ?>
+                                        ><?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></option>
+                                    <?php endforeach; ?>
+                        </select>
+
                         <p>Image</p>
                         <img src="<?php echo \Model\Admin\Categories::getImage($category['id']); ?>" width="200" alt="" />
                         <input type="file" name="image" placeholder="" value="<?php echo $category['image']; ?>">

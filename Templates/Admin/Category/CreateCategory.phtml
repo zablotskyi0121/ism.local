@@ -28,11 +28,11 @@
                         <input type="text" name="description" placeholder="" value="">
 
                         <p>Products per category</p>
-                        <select multiple="multiple" name="productList[]">
+                        <select class = "multiple-block" multiple="multiple" name="productList[]">
                             <?php foreach ($productList as $productItem) : ?>
                                 <div class="product">
                                     <option value="<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>">
-                                    <?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></option>
+                                        <?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></option>
                                 </div>   
                             <?php endforeach; ?>
                         </select>

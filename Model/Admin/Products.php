@@ -26,7 +26,7 @@ class Products {
 
         return $productList;
     }
-    
+
     public static function getAllProductsForCategory() {
 
         $db = \System\Db::getInstance()->getPDO();
@@ -40,6 +40,40 @@ class Products {
         }
 
         return $productList;
+    }
+
+    public static function assignProductToCategory($categoryId, $productId) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('INSERT INTO category_products (id, categoryId, productId) VALUES (NULL, :categoryId, :productId)');
+        $result->bindParam(':categoryId', $categoryId, \PDO::PARAM_INT);
+        $result->bindParam(':productId', $productId, \PDO::PARAM_STR);
+        $result->execute();
+        return $result;
+    }
+
+    public static function deleteProductFromCategory($id, $productId) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('DELETE FROM category_products WHERE categoryId = :id AND productId = :productId');
+        $result->bindParam(':id', $id, \PDO::PARAM_INT);
+        $result->bindParam(':productId', $productId, \PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    public static function getProductIdPerCategotyList($id) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->query('SELECT productId FROM category_products WHERE categoryId = ' . $id . '');
+
+        $productIdList = [];
+
+        foreach ($result as $product) {
+
+            $productIdList[] = $product['productId'];
+        }
+        return $productIdList;
     }
 
     public static function getProductById($id) {
