@@ -93,6 +93,14 @@ class Products {
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         return $result->execute();
     }
+    
+    public static function deleteProductCategoryRelation($id) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('DELETE FROM category_products WHERE productId = :id');
+        $result->bindParam(':id', $id, \PDO::PARAM_INT);
+        return $result->execute();
+    }
 
     public static function updateProductById($id, $options) {
         $db = \System\Db::getInstance()->getPDO();

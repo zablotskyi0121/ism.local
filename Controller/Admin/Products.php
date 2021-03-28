@@ -75,7 +75,7 @@ class Products {
         if (isset($_POST['submit'])) {
 
             \Model\Admin\Products::deleteProductById($id);
-
+            \Model\Admin\Products::deleteProductCategoryRelation($id);
             header("Location: /admin/products/index");
         }
 
