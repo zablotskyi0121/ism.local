@@ -8,8 +8,7 @@ class Product {
 
         $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
         $productList = \Model\Product::getAllProduct();
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('POP', ['productList' => $productList, 'categories' => $categories]);
+        \System\Renderer::render('POP', ['productList' => $productList, 'categories' => $categories]);
     }
 
 }

@@ -7,16 +7,14 @@ class Category {
     public function actionList() {
 
         $categories = \Model\Category::getCategoriesList();
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Menu', ['categories' => $categories]);
+        \System\Renderer::render('Menu', ['categories' => $categories]);
     }
 
     public function actionView($categoryId) {
 
         $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
         $productList = \Model\Product::getProductsPerCategoty($categoryId);
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('POP', ['productList' => $productList, 'categories' => $categories]);
+        \System\Renderer::render('POP', ['productList' => $productList, 'categories' => $categories]);
     }
 
 }

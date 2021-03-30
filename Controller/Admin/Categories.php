@@ -7,15 +7,13 @@ class Categories {
     public function actionIndex() {
 
         $categoryList = \Model\Admin\Categories::getCategoriesList();
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/CategoryList', ['categoryList' => $categoryList], true);
+        \System\Renderer::render('Admin/Category/CategoryList', ['categoryList' => $categoryList], true);
     }
 
     public function actionCreate() {
 
         $productList = \Model\Admin\Products::getAllProductsForCategory();
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/CreateCategory', ['productList' => $productList], true);
+        \System\Renderer::render('Admin/Category/CreateCategory', ['productList' => $productList], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -28,11 +26,11 @@ class Categories {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
                     move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/category/{$id}.jpg");
                 }
-            }
-            foreach ($products as $productId) {
-                \Model\Admin\Products::assignProductToCategory($categoryId, $productId);
-            }
 
+                foreach ($products as $productId) {
+                    \Model\Admin\Products::assignProductToCategory($categoryId, $productId);
+                }
+            }
             header("Location: /admin/categories/index");
         }
     }
@@ -40,11 +38,10 @@ class Categories {
     public function actionUpdate($id) {
 
         $category = \Model\Admin\Categories::getCategoryById($id);
-        $productList = \Model\Admin\Products::getAllProductsForCategory();
-        $productIdArray = \Model\Admin\Products::getProductIdPerCategotyList($id);
+        $productList = \Model\Admin\Products::getAllProductsForCategory(); // AllProducts
+        $productIdArray = \Model\Admin\Products::getProductIdPerCategotyList($id); //category products, getProductIdPerCategotyList- getCategoryProducts
 
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/UpdateCategory', ['category' => $category, 'productList' => $productList, 'productIdArray' => $productIdArray], true);
+        \System\Renderer::render('Admin/Category/UpdateCategory', ['category' => $category, 'productList' => $productList, 'productIdArray' => $productIdArray], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -80,8 +77,7 @@ class Categories {
 
     public function actionDelete($id) {
 
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Admin/Category/DeleteCategory', ['id' => $id], true);
+        \System\Renderer::render('Admin/Category/DeleteCategory', ['id' => $id], true);
 
         if (isset($_POST['submit'])) {
             \Model\Admin\Categories::deleteCategoryById($id);

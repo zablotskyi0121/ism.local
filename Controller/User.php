@@ -36,8 +36,7 @@ class User {
                 header("Location: ");
             }
         }
-        $renderer = new \System\Renderer();
-        $renderer = $renderer->render('Login');
+        \System\Renderer::render('Login');
     }
 
 }
