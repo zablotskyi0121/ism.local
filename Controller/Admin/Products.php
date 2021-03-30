@@ -27,6 +27,7 @@ class Products {
             if ($id) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
                     move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/{$id}.jpg");
+                    \Model\Admin\Products::insertImagePath($id);
                 }
             };
 

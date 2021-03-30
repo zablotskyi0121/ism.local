@@ -31,7 +31,7 @@
                         <select class = "multiple-block" multiple="multiple" name="productList[]">
                             <?php foreach ($productList as $productItem) : ?>
                                 <option value="<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>"
-                                <?php echo in_array($productItem['id'], $productIdArray) ? 'selected' : '' ?>
+                                <?php echo in_array($productItem['id'], $categoryProducts) ? 'selected' : '' ?>
                                         ><?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></option>
                                     <?php endforeach; ?>
                         </select>

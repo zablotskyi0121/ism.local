@@ -38,15 +38,15 @@ class Categories {
     public function actionUpdate($id) {
 
         $category = \Model\Admin\Categories::getCategoryById($id);
-        $productList = \Model\Admin\Products::getAllProduct(); // AllProducts
-        $productIdArray = \Model\Admin\Products::getProductIdPerCategotyList($id); //category products, getProductIdPerCategotyList- getCategoryProducts
+        $productList = \Model\Admin\Products::getAllProduct(); 
+        $categoryProducts = \Model\Admin\Products::getCategoryProducts($id); 
 
-        \System\Renderer::render('Admin/Category/Update', ['category' => $category, 'productList' => $productList, 'productIdArray' => $productIdArray], true);
+        \System\Renderer::render('Admin/Category/Update', ['category' => $category, 'productList' => $productList, 'categoryProducts' => $categoryProducts], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
             $description = $_POST['description'];
-            $productsInput = $_POST['productList'];
+            $products = $_POST['productList'];
 
             if (\Model\Admin\Categories::updateCategoryById($id, $name, $description)) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
@@ -56,17 +56,17 @@ class Categories {
             }
 
             //insert new products 
-            foreach ($productsInput as $productId) {
+            foreach ($products as $productId) {
 
-                if (!in_array($productId, $productIdArray)) {
+                if (!in_array($productId, $categoryProducts)) {
                     \Model\Admin\Products::assignProductToCategory($id, $productId);
                 }
             }
 
             //delete products
-            foreach ($productIdArray as $productId) {
+            foreach ($categoryProducts as $productId) {
 
-                if (!in_array($productId, $productsInput)) {
+                if (!in_array($productId, $products)) {
                     \Model\Admin\Products::deleteProductFromCategory($id, $productId);
                 }
             }

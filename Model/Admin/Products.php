@@ -26,7 +26,7 @@ class Products {
 
         return $productList;
     }
-    
+
     public static function assignProductToCategory($categoryId, $productId) {
 
         $db = \System\Db::getInstance()->getPDO();
@@ -47,7 +47,7 @@ class Products {
         return $result->execute();
     }
 
-    public static function getProductIdPerCategotyList($id) {
+    public static function getCategoryProducts($id) {
 
         $db = \System\Db::getInstance()->getPDO();
         $result = $db->query('SELECT productId FROM category_products WHERE categoryId = ' . $id . '');
@@ -78,7 +78,7 @@ class Products {
         $result->bindParam(':id', $id, \PDO::PARAM_INT);
         return $result->execute();
     }
-    
+
     public static function deleteProductCategoryRelation($id) {
 
         $db = \System\Db::getInstance()->getPDO();
@@ -115,6 +115,15 @@ class Products {
             return $db->lastInsertId();
         }
         echo 'error';
+    }
+
+    public static function insertImagePath($id) {
+        $db = \System\Db::getInstance()->getPDO();
+
+        $result = $db->prepare('UPDATE products SET image="/media/images/' . $id . '.jpg" WHERE id= :id ');
+        $result->bindParam(':id', $id, \PDO::PARAM_INT);
+        $result->execute();
+        return $result;
     }
 
     public static function getImage($id) {
