@@ -7,12 +7,12 @@ class Products {
     public function actionIndex() {
 
         $productList = \Model\Admin\Products::getAllProduct();
-        \System\Renderer::render('Admin/Product/ProductList', ['productList' => $productList], true);
+        \System\Renderer::render('Admin/Product/List', ['productList' => $productList], true);
     }
 
     public function actionCreate() {
 
-        \System\Renderer::render('Admin/Product/CreateProduct', [], true);
+        \System\Renderer::render('Admin/Product/Create', [], true);
 
         if (isset($_POST['submit'])) {
 
@@ -40,7 +40,7 @@ class Products {
 
         $product = \Model\Admin\Products::getProductById($id);
 
-        \System\Renderer::render('Admin/Product/UpdateProduct', ['id' => $id, 'product' => $product], true);
+        \System\Renderer::render('Admin/Product/Update', ['id' => $id, 'product' => $product], true);
 
         if (isset($_POST['submit'])) {
 
@@ -66,7 +66,7 @@ class Products {
 
     public function actionDelete($id) {
 
-        \System\Renderer::render('Admin/Product/DeleteProduct', ['id' => $id], true);
+        \System\Renderer::render('Admin/Product/Delete', ['id' => $id], true);
 
         if (isset($_POST['submit'])) {
 

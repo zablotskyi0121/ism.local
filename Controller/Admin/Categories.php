@@ -7,13 +7,13 @@ class Categories {
     public function actionIndex() {
 
         $categoryList = \Model\Admin\Categories::getCategoriesList();
-        \System\Renderer::render('Admin/Category/CategoryList', ['categoryList' => $categoryList], true);
+        \System\Renderer::render('Admin/Category/List', ['categoryList' => $categoryList], true);
     }
 
     public function actionCreate() {
 
         $productList = \Model\Admin\Products::getAllProduct();
-        \System\Renderer::render('Admin/Category/CreateCategory', ['productList' => $productList], true);
+        \System\Renderer::render('Admin/Category/Create', ['productList' => $productList], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -41,7 +41,7 @@ class Categories {
         $productList = \Model\Admin\Products::getAllProduct(); // AllProducts
         $productIdArray = \Model\Admin\Products::getProductIdPerCategotyList($id); //category products, getProductIdPerCategotyList- getCategoryProducts
 
-        \System\Renderer::render('Admin/Category/UpdateCategory', ['category' => $category, 'productList' => $productList, 'productIdArray' => $productIdArray], true);
+        \System\Renderer::render('Admin/Category/Update', ['category' => $category, 'productList' => $productList, 'productIdArray' => $productIdArray], true);
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -77,7 +77,7 @@ class Categories {
 
     public function actionDelete($id) {
 
-        \System\Renderer::render('Admin/Category/DeleteCategory', ['id' => $id], true);
+        \System\Renderer::render('Admin/Category/Delete', ['id' => $id], true);
 
         if (isset($_POST['submit'])) {
             \Model\Admin\Categories::deleteCategoryById($id);
