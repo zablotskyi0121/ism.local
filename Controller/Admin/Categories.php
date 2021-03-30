@@ -20,7 +20,7 @@ class Categories {
             $description = $_POST['description'];
             $products = $_POST['productList'];
 
-            $id = $categoryId = \Model\Admin\Categories::createCategory($name, $description);
+            $id = \Model\Admin\Categories::createCategory($name, $description);
 
             if ($id) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
@@ -28,7 +28,7 @@ class Categories {
                 }
 
                 foreach ($products as $productId) {
-                    \Model\Admin\Products::assignProductToCategory($categoryId, $productId);
+                    \Model\Admin\Products::assignProductToCategory($id, $productId);
                 }
             }
             header("Location: /admin/categories/index");

@@ -31,6 +31,7 @@ function fatalErrorHandler() {
         ob_get_clean();
         $controller = new \Controller\Error503();
         $controller->page503();
+        die();
     }
 }
 
