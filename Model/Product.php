@@ -27,10 +27,20 @@ class Product {
         return $productList;
     }
 
+    public static function getProductById($id) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('SELECT * FROM `products` WHERE id =  :id');
+        $result->bindParam(':id', $id, \PDO::PARAM_INT);
+        $result->setFetchMode(\PDO::FETCH_ASSOC);
+        $result->execute();
+        return $result->fetch();
+    }
+
     public static function getProductsPerCategoty($categoryId) {
 
         $db = \System\Db::getInstance()->getPDO();
-        $product = $db->query('SELECT * FROM `products` JOIN `category_products` ON products.id = category_products.productId WHERE products.id = category_products.productId AND category_products.categoryId = ' . $categoryId . ' ');
+        $product = $db->query('SELECT products.id, products.sku, products.name, products.price, products.description, products.image  FROM `products` JOIN `category_products` ON products.id = category_products.productId WHERE products.id = category_products.productId AND category_products.categoryId = ' . $categoryId . ' ');
 
         $productList = [];
         $i = 0;
