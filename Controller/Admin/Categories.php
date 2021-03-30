@@ -12,7 +12,7 @@ class Categories {
 
     public function actionCreate() {
 
-        $productList = \Model\Admin\Products::getAllProductsForCategory();
+        $productList = \Model\Admin\Products::getAllProduct();
         \System\Renderer::render('Admin/Category/CreateCategory', ['productList' => $productList], true);
 
         if (isset($_POST['submit'])) {
@@ -38,7 +38,7 @@ class Categories {
     public function actionUpdate($id) {
 
         $category = \Model\Admin\Categories::getCategoryById($id);
-        $productList = \Model\Admin\Products::getAllProductsForCategory(); // AllProducts
+        $productList = \Model\Admin\Products::getAllProduct(); // AllProducts
         $productIdArray = \Model\Admin\Products::getProductIdPerCategotyList($id); //category products, getProductIdPerCategotyList- getCategoryProducts
 
         \System\Renderer::render('Admin/Category/UpdateCategory', ['category' => $category, 'productList' => $productList, 'productIdArray' => $productIdArray], true);
