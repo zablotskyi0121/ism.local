@@ -109,3 +109,10 @@ nav .brand-logo {
     width: 250px;
     height: 150px;
 }
+
+.shopping-cart{
+    position: absolute;
+    right: 30px;
+    color: #B3842B;
+    font-size: 25px;
+}

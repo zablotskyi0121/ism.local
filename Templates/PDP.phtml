@@ -4,4 +4,7 @@
     <p><?php echo htmlentities($product['id'], ENT_QUOTES); ?></p>
     <p><?php echo htmlentities($product['price'], ENT_QUOTES); ?></p>
     <p><?php echo htmlentities($product['description'], ENT_QUOTES); ?></p>
+    <p><label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1">
+        <a href="/checkout/add/<?php echo $product['id']; ?>" ><button class="add-button" >Add to Cart</button></a></p>
 </div>
