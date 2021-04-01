@@ -37,6 +37,29 @@ class Product {
         return $result->fetch();
     }
 
+    public static function getProdustsByIds($idsArray) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $idsString = implode(',', $idsArray);
+        $result = $db->query('SELECT * FROM `products` WHERE id IN ('.$idsString.')');
+        $result->setFetchMode(\PDO::FETCH_ASSOC);
+        
+        $productList = [];
+        $i = 0;
+        while ($phones = $result->fetch()) {
+            $productList[$i]['id'] = $phones['id'];
+            $productList[$i]['sku'] = $phones['sku'];
+            $productList[$i]['name'] = $phones['name'];
+            $productList[$i]['price'] = $phones['price'];
+            $productList[$i]['description'] = $phones['description'];
+            $productList[$i]['image'] = $phones['image'];
+
+            $i++;
+        }
+
+        return $productList;
+    }
+
     public static function getProductsPerCategoty($categoryId) {
 
         $db = \System\Db::getInstance()->getPDO();

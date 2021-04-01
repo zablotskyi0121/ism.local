@@ -13,8 +13,8 @@
                 <button type="submit">Search</button>
             </form>
         </nav>
-        <a href="/checkout/cart">
-            <i class="shopping-cart">Cart</i> 
+        <a href="/cart/view">
+            <i class="shopping-cart">Cart(<span id="cart-count"><?php echo \Controller\Cart::countItems(); ?></span>)</i> 
         </a>
 
     </div>
