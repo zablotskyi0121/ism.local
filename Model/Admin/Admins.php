@@ -33,7 +33,6 @@ class Admins {
 
     public static function auth($userId) {
 
-        session_start();
         $_SESSION['user'] = $userId;
     }
 

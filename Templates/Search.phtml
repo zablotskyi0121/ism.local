@@ -8,7 +8,7 @@
                 <div class="product">
                     <text "Search results:"/>
                     <img src="<?php echo $productItem['image']; ?>" width="50px" alt=""> 
-                    <h1 class="Name"><a href="#"><?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></a></h1>
+                    <h1 class="Name"><a href="/product/view/<?php echo $productItem['id']; ?>"><?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></a></h1>
                     <p><?php echo htmlentities($productItem['id'], ENT_QUOTES); ?></p>
                     <p><?php echo htmlentities($productItem['price'], ENT_QUOTES); ?></p>
                     <p><?php echo htmlentities($productItem['description'], ENT_QUOTES); ?></p>

@@ -8,7 +8,7 @@ class Cabinet {
 
         $email = false;
         $password = false;
-        \System\Renderer::render('Admin/Login', ['email' => $email, 'password' => $password], true );
+        \System\Renderer::render('Admin/Login', ['email' => $email, 'password' => $password], true);
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
             $password = md5($_POST['password']);
@@ -27,7 +27,6 @@ class Cabinet {
 
     public function actionCabinet() {
 
-        session_start();
         if (isset($_SESSION["user"])) {
             \System\Renderer::render('Admin/Cabinet', [], true);
         } else {

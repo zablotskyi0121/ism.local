@@ -7,19 +7,20 @@ class Cart {
     public function actionAdd($id) {
 
         $productsInCart = array();
+        $quantity = $_POST['quantity'];
 
         if (isset($_SESSION['products'])) {
             $productsInCart = $_SESSION['products'];
         }
 
         if (array_key_exists($id, $productsInCart)) {
-            $productsInCart[$id]++;
+            $productsInCart[$id] = $productsInCart[$id] + $quantity;
         } else {
-            $productsInCart[$id] = 1;
+            $productsInCart[$id] = $quantity;
         }
 
         $_SESSION['products'] = $productsInCart;
-       
+
 
         $referrer = $_SERVER['HTTP_REFERER'];
         header("Location: $referrer");
