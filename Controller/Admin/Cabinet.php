@@ -16,7 +16,7 @@ class Cabinet {
             $userId = \Model\Admin\Admins::checkUserData($email, $password);
 
             if ($userId == false) {
-                echo 'The account login was incorrect. Check your credential.';
+                echo '<div style="color:#F00; text-align:center; top:15%; position:absolute;">The account login was incorrect. Check your credential.';
             } else {
                 \Model\Admin\Admins::auth($userId);
 
@@ -36,7 +36,6 @@ class Cabinet {
 
     public function actionLogout() {
 
-        session_start();
         unset($_SESSION["user"]);
 
         header("Location: /admin/cabinet/login");

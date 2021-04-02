@@ -1,12 +1,16 @@
 <?php
-session_start();
+
+if (!session_id()) {
+    session_start();
+}
+
 define('_DIR_PUB_', getcwd());
 define('_DIR_', realpath('../') . DIRECTORY_SEPARATOR);
 define('_URL_', $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
 define('_ADMIN_URL_', $_SERVER['SERVER_NAME'] . '/admin');
 
 function appAutoload($class) {
-    
+
     $file = _DIR_ . str_replace("\\", "/", $class) . '.php';
 
     if (is_readable($file)) {
@@ -17,7 +21,7 @@ function appAutoload($class) {
 spl_autoload_register('appAutoload');
 
 function ErrorHandler($errno, $errmsg, $filename, $linenum) {
-    
+
     $controller = new \Controller\Error503();
     $controller->page503();
     $err = "$errmsg = $filename = $linenum\r\n";
@@ -26,7 +30,7 @@ function ErrorHandler($errno, $errmsg, $filename, $linenum) {
 }
 
 function fatalErrorHandler() {
-    
+
     if (!empty($error = error_get_last() AND $error['type'] & (E_ERROR | E_PARSE | E_COMPILE_ERROR | E_CORE_ERROR))) {
         ob_get_clean();
         $controller = new \Controller\Error503();
