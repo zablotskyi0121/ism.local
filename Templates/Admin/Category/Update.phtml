@@ -7,7 +7,7 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin/cabinet/cabinet">Cabinet</a></li>        
-                    <li><a href="/admin/categories/index">Manage category</a></li>
+                    <li><a href="/admin/category/index">Manage category</a></li>
                     <li class="active">Update category</li>
                 </ol>
             </div>
@@ -37,7 +37,7 @@
                         </select>
 
                         <p>Image</p>
-                        <img src="<?php echo \Model\Admin\Categories::getImage($category['id']); ?>" width="200" alt="" />
+                        <img src="<?php echo \Model\Admin\Category::getImage($category['id']); ?>" width="200" alt="" />
                         <input type="file" name="image" placeholder="" value="<?php echo $category['image']; ?>">
 
                         <br><br>

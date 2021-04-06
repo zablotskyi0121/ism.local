@@ -2,11 +2,11 @@
 
 namespace Controller\Admin;
 
-class Products {
+class Product {
 
     public function actionIndex() {
 
-        $productList = \Model\Admin\Products::getAllProduct();
+        $productList = \Model\Admin\Product::getAllProduct();
         \System\Renderer::render('Admin/Product/List', ['productList' => $productList], true);
     }
 
@@ -22,16 +22,16 @@ class Products {
             $options['sku'] = $_POST['sku'];
             $options['description'] = $_POST['description'];
 
-            $id = \Model\Admin\Products::createProduct($options);
+            $id = \Model\Admin\Product::createProduct($options);
 
             if ($id) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
                     move_uploaded_file($_FILES["image"]["tmp_name"], _DIR_PUB_ . "/media/images/{$id}.jpg");
-                    \Model\Admin\Products::insertImagePath($id);
+                    \Model\Admin\Product::insertImagePath($id);
                 }
             };
 
-            header("Location: /admin/products/index");
+            header("Location: /admin/product/index");
         }
 
         return true;
@@ -39,7 +39,7 @@ class Products {
 
     public function actionUpdate($id) {
 
-        $product = \Model\Admin\Products::getProductById($id);
+        $product = \Model\Admin\Product::getProductById($id);
 
         \System\Renderer::render('Admin/Product/Update', ['id' => $id, 'product' => $product], true);
 
@@ -51,7 +51,7 @@ class Products {
             $options['qty'] = $_POST['qty'];
             $options['description'] = $_POST['description'];
 
-            if (\Model\Admin\Products::updateProductById($id, $options)) {
+            if (\Model\Admin\Product::updateProductById($id, $options)) {
 
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
 
@@ -59,7 +59,7 @@ class Products {
                 }
             }
 
-            header("Location: /admin/products/index");
+            header("Location: /admin/product/index");
         }
 
         return true;
@@ -71,9 +71,9 @@ class Products {
 
         if (isset($_POST['submit'])) {
 
-            \Model\Admin\Products::deleteProductById($id);
-            \Model\Admin\Products::deleteProductCategoryRelation($id);
-            header("Location: /admin/products/index");
+            \Model\Admin\Product::deleteProductById($id);
+            \Model\Admin\Product::deleteProductCategoryRelation($id);
+            header("Location: /admin/product/index");
         }
 
         return true;

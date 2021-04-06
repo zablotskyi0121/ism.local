@@ -11,7 +11,7 @@
                 </ol>
             </div>
 
-            <a href="/admin/categories/create" class="right">Add category</a>
+            <a href="/admin/category/create" class="right">Add category</a>
 
             <h4>Category list</h4>
 
@@ -31,9 +31,9 @@
                         <td><?php echo htmlentities($category['id'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($category['name'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($category['description'], ENT_QUOTES); ?></td>
-                        <td><img src="<?php echo \Model\Admin\Categories::getImage($category['id']); ?>" width="50px" alt=""></td>  
-                        <td><a href="/admin/categories/update/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Edit">Edit</a></td>
-                        <td><a href="/admin/categories/delete/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Delete">Delete</a></td>
+                        <td><img src="<?php echo \Model\Admin\Category::getImage($category['id']); ?>" width="50px" alt=""></td>  
+                        <td><a href="/admin/category/update/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Edit">Edit</a></td>
+                        <td><a href="/admin/category/delete/<?php echo htmlentities($category['id'], ENT_QUOTES); ?>" title="Delete">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

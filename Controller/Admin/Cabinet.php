@@ -13,12 +13,12 @@ class Cabinet {
             $email = $_POST['email'];
             $password = md5($_POST['password']);
 
-            $userId = \Model\Admin\Admins::checkUserData($email, $password);
+            $userId = \Model\Admin\Admin::checkUserData($email, $password);
 
             if ($userId == false) {
                 echo '<div style="color:#F00; text-align:center; top:15%; position:absolute;">The account login was incorrect. Check your credential.';
             } else {
-                \Model\Admin\Admins::auth($userId);
+                \Model\Admin\Admin::auth($userId);
 
                 header("Location: /admin/cabinet/cabinet");
             }

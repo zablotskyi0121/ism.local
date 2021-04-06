@@ -12,9 +12,8 @@ class Category {
 
     public function actionView($categoryId) {
 
-        $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
         $productList = \Model\Product::getProductsPerCategoty($categoryId);
-        \System\Renderer::render('POP', ['productList' => $productList, 'categories' => $categories]);
+        \System\Renderer::render('POP', ['productList' => $productList]);
     }
 
 }

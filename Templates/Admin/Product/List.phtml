@@ -11,7 +11,7 @@
                 </ol>
             </div>
 
-            <a href="/admin/products/create" class="right"><i class="fa fa-plus"></i> Add product </a>
+            <a href="/admin/product/create" class="right"><i class="fa fa-plus"></i> Add product </a>
 
             <h4>Products list</h4>
 
@@ -30,12 +30,12 @@
                 <?php foreach ($productList as $productItem): ?>
                     <tr>
                         <td><?php echo htmlentities($productItem['id'], ENT_QUOTES); ?></td>
-                        <td><img src="<?php echo \Model\Admin\Products::getImage($productItem['id']); ?>" width="50px" alt=""> </td>
+                        <td><img src="<?php echo \Model\Admin\Product::getImage($productItem['id']); ?>" width="50px" alt=""> </td>
                         <td><?php echo htmlentities($productItem['sku'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($productItem['name'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($productItem['price'], ENT_QUOTES); ?></td>  
-                        <td><a href="/admin/products/update/<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>" title="Edit">Edit</td>
-                        <td><a href="/admin/products/delete/<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>" title="Delete">Delete</a></td>
+                        <td><a href="/admin/product/update/<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>" title="Edit">Edit</td>
+                        <td><a href="/admin/product/delete/<?php echo htmlentities($productItem['id'], ENT_QUOTES); ?>" title="Delete">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

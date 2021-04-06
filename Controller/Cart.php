@@ -6,6 +6,7 @@ class Cart {
 
     public function actionAdd($id) {
 
+        $a = session_id();
         $productsInCart = array();
         $quantity = $_POST['quantity'];
 
@@ -37,8 +38,7 @@ class Cart {
                 $productsIds = array_keys($productsInCart);
                 $productList = \Model\Product::getProdustsByIds($productsIds);
             } else {
-                $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
-                \System\Renderer::render('EmptyCart', ['categories' => $categories]);
+                \System\Renderer::render('EmptyCart',[]);
                 exit();
             }
 
@@ -49,8 +49,7 @@ class Cart {
             }
         }
 
-        $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
-        \System\Renderer::render('Cart', ['productList' => $productList, 'categories' => $categories, 'productsInCart' => $productsInCart, 'totalPrice' => $totalPrice]);
+        \System\Renderer::render('Cart', ['productList' => $productList, 'productsInCart' => $productsInCart, 'totalPrice' => $totalPrice]);
     }
 
     public function actionCheckout() {
@@ -73,8 +72,7 @@ class Cart {
 
             $totalQuantity = \Controller\Cart::countItems();
 
-            $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
-            \System\Renderer::render('Checkout', ['totalQuantity' => $totalQuantity, 'categories' => $categories, 'totalPrice' => $totalPrice]);
+            \System\Renderer::render('Checkout', ['totalQuantity' => $totalQuantity, 'totalPrice' => $totalPrice]);
 
             $userName = false;
             $userPhone = false;
@@ -84,7 +82,7 @@ class Cart {
                 $userName = $_POST['userName'];
                 $userPhone = $_POST['userPhone'];
                 $userComment = $_POST['userComment'];
-                
+
                 echo 'test';
             }
         }

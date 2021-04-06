@@ -1,5 +1,7 @@
 <head></head>
 <body>
+    <?php $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
+    ?>
     <div class="menu">
         <?php foreach ($categories as $categoryItem) : ?>
 

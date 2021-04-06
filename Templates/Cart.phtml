@@ -13,7 +13,7 @@
             </tr>
             <?php foreach ($productList as $product): ?>
                 <tr>
-                    <td><img src="<?php echo \Model\Admin\Products::getImage($product['id']); ?>" width="40px"></td>
+                    <td><img src="<?php echo \Model\Admin\Product::getImage($product['id']); ?>" width="40px"></td>
                     <td>
                         <a href="/product/view/<?php echo $product['id']; ?>">
                             <?php echo $product['name']; ?>

@@ -6,7 +6,7 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin/cabinet/cabinet">Cabinet</a></li>
-                    <li><a href="/admin/products/index">Manage products</a></li>
+                    <li><a href="/admin/product/index">Manage products</a></li>
                     <li class="active">Edit product</li>
                 </ol>
             </div>
@@ -37,7 +37,7 @@
                         <textarea name="description"><?php echo htmlentities($product['description'], ENT_QUOTES); ?></textarea>
 
                         <p>Image</p>
-                        <img src="<?php echo \Model\Admin\Products::getImage($product['id']); ?>" width="200" alt="" />
+                        <img src="<?php echo \Model\Admin\Product::getImage($product['id']); ?>" width="200" alt="" />
                         <input type="file" name="image" placeholder="" value="<?php echo $product['image']; ?>">
 
                         <br/><br/>

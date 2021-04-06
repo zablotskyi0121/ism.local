@@ -2,7 +2,7 @@
 
 namespace Model\Admin;
 
-class Categories {
+class Category {
 
     public static function getCategoriesList() {
 

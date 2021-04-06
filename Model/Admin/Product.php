@@ -2,7 +2,7 @@
 
 namespace Model\Admin;
 
-class Products {
+class Product {
 
     public static function getAllProduct() {
 

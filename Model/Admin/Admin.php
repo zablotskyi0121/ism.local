@@ -2,7 +2,7 @@
 
 namespace Model\Admin;
 
-class Admins {
+class Admin {
 
     public static function getUserById($id) {
         $db = \System\Db::getInstance()->getPDO();
