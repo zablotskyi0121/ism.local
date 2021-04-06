@@ -1,0 +1,39 @@
+<div class="features_items">
+    <h2 class="title text-center">Checkout</h2>
+
+    <?php if ($result): ?>
+        <p>Order success. We will call you back.</p>
+    <?php else: ?>
+
+        <p>Selected products: <?php echo $totalQuantity; ?>, for the amount: <?php echo $totalPrice; ?>, $</p><br/>
+
+        <?php if (!$result): ?> 
+            <div class="features_items">
+                <h2 class="title text-center">Checkout</h2>
+
+                <p>To place an order, fill out the form</p>
+
+                <div class="login-form">
+                    <form action="#" method="post">
+
+                        <p>Name</p>
+                        <input type="text" name="userName" placeholder="" />
+
+                        <p>Phone</p>
+                        <input type="text" name="userPhone" placeholder="" />
+
+                        <p>Comment on the order</p>
+                        <input type="text" name="userComment" placeholder="Сообщение"/>
+
+                        <br/>
+                        <br/>
+                        <input type="submit" name="submit" class="btn btn-default" value="Submit" />
+                    </form>
+                </div>
+            </div>
+
+            <a class="btn btn-default checkout" href="/"><i class="fa fa-shopping-cart">Back to the shopping</i></a>
+        <?php endif; ?>
+    <?php endif; ?>
+
+</div>

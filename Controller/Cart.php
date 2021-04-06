@@ -53,6 +53,43 @@ class Cart {
         \System\Renderer::render('Cart', ['productList' => $productList, 'categories' => $categories, 'productsInCart' => $productsInCart, 'totalPrice' => $totalPrice]);
     }
 
+    public function actionCheckout() {
+
+        if (isset($_SESSION['products'])) {
+            $productsInCart = $_SESSION['products'];
+
+            if (isset($_SESSION['products'])) {
+                $productsInCart = $_SESSION['products'];
+            }
+
+            $productsIds = array_keys($productsInCart);
+            $productList = \Model\Product::getProdustsByIds($productsIds);
+
+            $totalPrice = 0;
+
+            foreach ($productList as $item) {
+                $totalPrice += $item['price'] * $productsInCart[$item['id']];
+            }
+
+            $totalQuantity = \Controller\Cart::countItems();
+
+            $categories = \System\App::getModel(\Model\Category::class)->getCategoriesList();
+            \System\Renderer::render('Checkout', ['totalQuantity' => $totalQuantity, 'categories' => $categories, 'totalPrice' => $totalPrice]);
+
+            $userName = false;
+            $userPhone = false;
+            $userComment = false;
+
+            if (isset($_POST['submit'])) {
+                $userName = $_POST['userName'];
+                $userPhone = $_POST['userPhone'];
+                $userComment = $_POST['userComment'];
+                
+                echo 'test';
+            }
+        }
+    }
+
     public function actionDelete($id) {
 
         $productsInCart = $_SESSION['products'];
