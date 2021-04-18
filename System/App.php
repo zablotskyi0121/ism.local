@@ -10,4 +10,10 @@ class App {
         return new $modelName();
         // To do: check if class exist -> exception if class not found
     }
+    
+    public static function getUserId() {
+        $sessionId = session_id();
+        $userId = \Model\User::getUserId($sessionId);
+        return $userId;
+    }
     }

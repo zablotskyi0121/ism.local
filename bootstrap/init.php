@@ -1,7 +1,14 @@
 <?php
 
+require_once '../Model/User.php';
+require_once '../System/Db.php';
+require_once '../System/ConfigManager.php';
+
 if (!session_id()) {
     session_start();
+    $sessionId = session_id();
+    $userId = \Model\User::insertSession($sessionId);
+   
 }
 
 define('_DIR_PUB_', getcwd());

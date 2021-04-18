@@ -20,14 +20,16 @@
                         </a>
                     </td>
                     <td><?php echo $product['price']; ?></td>
-                    <td><?php echo $productsInCart[$product['id']]; ?></td> 
-                    <td>
-                        <a href="/cart/delete/<?php echo $product['id']; ?>">
-                            <i class="delete">Delete</i>
-                        </a>
-                    </td>
-                </tr>
+                        
+                        <td><?php echo 1 //$products['sum(qty)']; ?> </td> 
+                        <td>
+                            <a href="/cart/delete/<?php echo $product['id']; ?>">
+                                <i class="delete">Delete</i>
+                            </a>
+                        </td>
+                    </tr>
             <?php endforeach; ?>
+
             <tr>
                 <td colspan="4">Total Price, $:</td>
                 <td><?php echo $totalPrice; ?></td>

@@ -40,10 +40,9 @@ class Product {
     public static function getProdustsByIds($idsArray) {
 
         $db = \System\Db::getInstance()->getPDO();
-        $idsString = implode(',', $idsArray);
-        $result = $db->query('SELECT * FROM `products` WHERE id IN ('.$idsString.')');
+        $result = $db->query('SELECT * FROM `products` WHERE id IN (' . $idsArray . ')');
         $result->setFetchMode(\PDO::FETCH_ASSOC);
-        
+
         $productList = [];
         $i = 0;
         while ($phones = $result->fetch()) {
@@ -79,6 +78,31 @@ class Product {
         }
 
         return $productList;
+    }
+
+    public static function sumProductsInCart($quoteId) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('SELECT sum(qty) FROM `quoteItem` WHERE quoteId = :quoteId ');
+        $result->bindParam(':quoteId', $quoteId, \PDO::PARAM_INT);
+        $result->setFetchMode(\PDO::FETCH_ASSOC);
+        $result->execute();
+        $row = $result->fetch();
+        if ($row) {
+            $sum = $row['sum(qty)'];
+        }
+        return $sum;
+    }
+
+    public static function deleteProduct($id, $quoteId) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('DELETE FROM `quoteItem` WHERE productId = :id AND quoteId = :quoteId');
+        $result->bindParam(':id', $id, \PDO::PARAM_INT);
+        $result->bindParam(':quoteId', $quoteId, \PDO::PARAM_INT);
+        $result->setFetchMode(\PDO::FETCH_ASSOC);
+        $result->execute();
+        return $result->fetch();
     }
 
 }

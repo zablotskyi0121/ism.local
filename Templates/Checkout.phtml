@@ -1,39 +1,32 @@
 <div class="features_items">
     <h2 class="title text-center">Checkout</h2>
 
-    <?php if ($result): ?>
-        <p>Order success. We will call you back.</p>
-    <?php else: ?>
+    <p>Selected products: <?php echo $totalQuantity; ?>, for the amount: <?php echo $totalPrice; ?>, $</p><br/>
 
-        <p>Selected products: <?php echo $totalQuantity; ?>, for the amount: <?php echo $totalPrice; ?>, $</p><br/>
+    <p>To place an order, fill out the form</p>
 
-        <?php if (!$result): ?> 
-            <div class="features_items">
-                <h2 class="title text-center">Checkout</h2>
+    <div class="login-form">
+        <form action="" method="post">
 
-                <p>To place an order, fill out the form</p>
+            <p>Name</p>
+            <input type="text" name="userName" placeholder="Name" />
 
-                <div class="login-form">
-                    <form action="#" method="post">
+            <p>Email</p>
+            <input type="email" name="userEmail" placeholder="E-mail"/>
 
-                        <p>Name</p>
-                        <input type="text" name="userName" placeholder="" />
+            <p>Phone</p>
+            <input type="text" name="userPhone" placeholder="Phone" />
 
-                        <p>Phone</p>
-                        <input type="text" name="userPhone" placeholder="" />
+            <p>Comment to the order</p>
+            <input type="text" name="userComment" placeholder="Comment"/>
 
-                        <p>Comment on the order</p>
-                        <input type="text" name="userComment" placeholder="Сообщение"/>
+            <br/>
+            <br/>
+            <input type="submit" name="submit" value="Submit" /> 
+        </form>
+    </div>
+</div>
 
-                        <br/>
-                        <br/>
-                        <input type="submit" name="submit" class="btn btn-default" value="Submit" />
-                    </form>
-                </div>
-            </div>
-
-            <a class="btn btn-default checkout" href="/"><i class="fa fa-shopping-cart">Back to the shopping</i></a>
-        <?php endif; ?>
-    <?php endif; ?>
+<a class="btn btn-default checkout" href="/"><i class="fa fa-shopping-cart">Back to the shopping</i></a>
 
 </div>

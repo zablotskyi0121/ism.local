@@ -6,22 +6,15 @@ class Cart {
 
     public function actionAdd($id) {
 
-        $a = session_id();
-        $productsInCart = array();
-        $quantity = $_POST['quantity'];
+        $qty = $_POST['quantity'];
 
-        if (isset($_SESSION['products'])) {
-            $productsInCart = $_SESSION['products'];
+        $userId = \System\App::getUserId();
+        $quoteId = \Model\User::checkOrQuoteExist($userId);
+        if ($quoteId == 0) {
+            $quoteId = \Model\User::insertQuote($userId);
         }
 
-        if (array_key_exists($id, $productsInCart)) {
-            $productsInCart[$id] = $productsInCart[$id] + $quantity;
-        } else {
-            $productsInCart[$id] = $quantity;
-        }
-
-        $_SESSION['products'] = $productsInCart;
-
+        \Model\User::insertQuoteItem($quoteId, $id, $qty);
 
         $referrer = $_SERVER['HTTP_REFERER'];
         header("Location: $referrer");
@@ -31,80 +24,101 @@ class Cart {
 
     public function actionView() {
 
-        if (isset($_SESSION['products'])) {
-            $productsInCart = $_SESSION['products'];
+        $userId = \System\App::getUserId();
+        $quoteId = \Model\User::checkOrQuoteExist($userId);
+        $productsInCart = \Model\User::getProductsForQuote($quoteId);
 
-            if ($productsInCart) {
-                $productsIds = array_keys($productsInCart);
-                $productList = \Model\Product::getProdustsByIds($productsIds);
-            } else {
-                \System\Renderer::render('EmptyCart',[]);
-                exit();
-            }
-
-            $totalPrice = 0;
-
-            foreach ($productList as $item) {
-                $totalPrice += $item['price'] * $productsInCart[$item['id']];
-            }
+        foreach ($productsInCart as $product) {
+            $id = $product['productId'];
+            $qty = $product['sum(qty)'];
         }
+        if ($productsInCart) {
+
+            $productsIds = implode(', ', array_map(function ($value) {
+                        return $value['productId'];
+                    }, $productsInCart));
+
+            $productList = \Model\Product::getProdustsByIds($productsIds);
+        } else {
+            \System\Renderer::render('EmptyCart', []);
+            exit();
+        }
+
+        $totalPrice = 0;
+
+        foreach ($productList as $item) {
+            $totalPrice += $item['price'] * 1;
+        }
+
 
         \System\Renderer::render('Cart', ['productList' => $productList, 'productsInCart' => $productsInCart, 'totalPrice' => $totalPrice]);
     }
 
     public function actionCheckout() {
 
-        if (isset($_SESSION['products'])) {
-            $productsInCart = $_SESSION['products'];
+        $userId = \System\App::getUserId();
+        $quoteId = \Model\User::checkOrQuoteExist($userId);
+        $productsInCart = \Model\User::getProductsForQuote($quoteId);
 
-            if (isset($_SESSION['products'])) {
-                $productsInCart = $_SESSION['products'];
-            }
+        $productsIds = implode(', ', array_map(function ($value) {
+                    return $value['productId'];
+                }, $productsInCart));
+        $productList = \Model\Product::getProdustsByIds($productsIds);
 
-            $productsIds = array_keys($productsInCart);
-            $productList = \Model\Product::getProdustsByIds($productsIds);
+        $totalPrice = 0;
 
-            $totalPrice = 0;
-
-            foreach ($productList as $item) {
-                $totalPrice += $item['price'] * $productsInCart[$item['id']];
-            }
-
-            $totalQuantity = \Controller\Cart::countItems();
-
-            \System\Renderer::render('Checkout', ['totalQuantity' => $totalQuantity, 'totalPrice' => $totalPrice]);
-
-            $userName = false;
-            $userPhone = false;
-            $userComment = false;
-
-            if (isset($_POST['submit'])) {
-                $userName = $_POST['userName'];
-                $userPhone = $_POST['userPhone'];
-                $userComment = $_POST['userComment'];
-
-                echo 'test';
-            }
+        foreach ($productList as $item) {
+            $totalPrice += $item['price'] * 1;
         }
+
+        $totalQuantity = \Controller\Cart::countItems();
+        \System\Renderer::render('Checkout', ['totalQuantity' => $totalQuantity, 'totalPrice' => $totalPrice]);
+
+        $userName = false;
+        $userEmail = false;
+        $userPhone = false;
+        $userComment = false;
+
+        if (isset($_POST['submit'])) {
+            $userName = $_POST['userName'];
+            $userEmail = $_POST['userEmail'];
+            $userPhone = $_POST['userPhone'];
+            $userComment = $_POST['userComment'];
+            $orderId = \Model\User::insertOrder($userId, $userName, $userEmail, $userPhone, $userComment);
+
+            foreach ($productsInCart as $product) {
+                $id = $product['productId'];
+                $qty = $product['sum(qty)'];
+                \Model\User::insertOrderItem($orderId, $id, $qty);
+            }
+            if ($orderId) {
+                \Model\User::clearCart($quoteId);
+            }
+            header("Location: /cart/success");
+        }
+    }
+
+    public function actionSuccess() {
+
+        $userId = \System\App::getUserId();
+        $orderId = \Model\User::getOrderId($userId);
+        \System\Renderer::render('SuccessPage', ['orderId' => $orderId]);
     }
 
     public function actionDelete($id) {
 
-        $productsInCart = $_SESSION['products'];
-        unset($productsInCart[$id]);
-        $_SESSION['products'] = $productsInCart;
-
+        $userId = \System\App::getUserId();
+        $quoteId = \Model\User::checkOrQuoteExist($userId);
+        \Model\Product::deleteProduct($id, $quoteId);
         header("Location: /cart/view");
     }
 
     public static function countItems() {
 
-        if (isset($_SESSION['products'])) {
+        $userId = \System\App::getUserId();
+        if (($quoteId = \Model\User::checkOrQuoteExist($userId))) {
 
-            $count = 0;
-            foreach ($_SESSION['products'] as $id => $quantity) {
-                $count = $count + $quantity;
-            }
+            $count = \Model\Product::sumProductsInCart($quoteId);
             return $count;
         } else {
 
