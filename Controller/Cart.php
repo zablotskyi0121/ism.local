@@ -28,15 +28,16 @@ class Cart {
         $quoteId = \Model\User::checkOrQuoteExist($userId);
         $productsInCart = \Model\User::getProductsForQuote($quoteId);
 
+        $productCartData = [];
+        $ids = [];
+
         foreach ($productsInCart as $product) {
-            $id = $product['productId'];
-            $qty = $product['sum(qty)'];
+            $productCartData[$product['productId']] = $product['sum(qty)'];
+            $ids[] = $product['productId'];
         }
         if ($productsInCart) {
 
-            $productsIds = implode(', ', array_map(function ($value) {
-                        return $value['productId'];
-                    }, $productsInCart));
+            $productsIds = implode(',', $ids);
 
             $productList = \Model\Product::getProdustsByIds($productsIds);
         } else {
@@ -46,8 +47,9 @@ class Cart {
 
         $totalPrice = 0;
 
-        foreach ($productList as $item) {
-            $totalPrice += $item['price'] * 1;
+        foreach ($productList as $key => $item) {
+            $productList[$key]['qty'] = $productCartData[$item['id']];
+            $totalPrice += $item['price'] * $productList[$key]['qty'];
         }
 
 
@@ -60,15 +62,21 @@ class Cart {
         $quoteId = \Model\User::checkOrQuoteExist($userId);
         $productsInCart = \Model\User::getProductsForQuote($quoteId);
 
-        $productsIds = implode(', ', array_map(function ($value) {
-                    return $value['productId'];
-                }, $productsInCart));
+        $productCartData = [];
+        $ids = [];
+
+        foreach ($productsInCart as $product) {
+            $productCartData[$product['productId']] = $product['sum(qty)'];
+            $ids[] = $product['productId'];
+        }
+        $productsIds = implode(',', $ids);
         $productList = \Model\Product::getProdustsByIds($productsIds);
 
         $totalPrice = 0;
 
-        foreach ($productList as $item) {
-            $totalPrice += $item['price'] * 1;
+        foreach ($productList as $key => $item) {
+            $productList[$key]['qty'] = $productCartData[$item['id']];
+            $totalPrice += $item['price'] * $productList[$key]['qty'];
         }
 
         $totalQuantity = \Controller\Cart::countItems();

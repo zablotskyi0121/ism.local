@@ -16,12 +16,12 @@
                     <td><img src="<?php echo \Model\Admin\Product::getImage($product['id']); ?>" width="40px"></td>
                     <td>
                         <a href="/product/view/<?php echo $product['id']; ?>">
-                            <?php echo $product['name']; ?>
+                            <?php echo htmlentities($product['name'], ENT_QUOTES); ?>
                         </a>
                     </td>
-                    <td><?php echo $product['price']; ?></td>
+                    <td><?php echo htmlentities($product['price'], ENT_QUOTES); ?></td>
                         
-                        <td><?php echo 1 //$products['sum(qty)']; ?> </td> 
+                        <td><?php echo htmlentities($product['qty'], ENT_QUOTES); ?> </td> 
                         <td>
                             <a href="/cart/delete/<?php echo $product['id']; ?>">
                                 <i class="delete">Delete</i>
