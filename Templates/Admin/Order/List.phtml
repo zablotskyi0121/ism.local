@@ -18,16 +18,18 @@
             <table class="table">
                 <tr>
                     <th>Order Id</th>
+                    <th>Total Price</th>
                     <th>User Id</th>
                     <th>Created</th>
-                    <th>User name</th>
-                    <th>User email</th>
-                    <th>User phone</th>
-                    <th>User comment</th>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>User Phone</th>
+                    <th>User Comment</th>
                 </tr>
                 <?php foreach ($orderList as $order): ?>
                     <tr>
                         <td><?php echo htmlentities($order['id'], ENT_QUOTES); ?></td>
+                        <td><?php echo htmlentities($order['totalPrice'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($order['userId'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($order['created'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($order['userName'], ENT_QUOTES); ?></td>
