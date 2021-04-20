@@ -79,30 +79,18 @@ class Product {
 
         return $productList;
     }
-
-    public static function sumProductsInCart($quoteId) {
+    
+    public static function getProductPrice($productId) {
 
         $db = \System\Db::getInstance()->getPDO();
-        $result = $db->prepare('SELECT sum(qty) FROM `quoteItem` WHERE quoteId = :quoteId ');
-        $result->bindParam(':quoteId', $quoteId, \PDO::PARAM_INT);
-        $result->setFetchMode(\PDO::FETCH_ASSOC);
+        $result = $db->prepare('SELECT `price` FROM `products` WHERE `id` = :productId');
+        $result->bindParam(':productId', $productId, \PDO::PARAM_INT);
         $result->execute();
-        $row = $result->fetch();
-        if ($row) {
-            $sum = $row['sum(qty)'];
+        $productPrice = $result->fetch();
+        if ($productPrice) {
+            return $productPrice['price'];
         }
-        return $sum;
-    }
-
-    public static function deleteProduct($id, $quoteId) {
-
-        $db = \System\Db::getInstance()->getPDO();
-        $result = $db->prepare('DELETE FROM `quoteItem` WHERE productId = :id AND quoteId = :quoteId');
-        $result->bindParam(':id', $id, \PDO::PARAM_INT);
-        $result->bindParam(':quoteId', $quoteId, \PDO::PARAM_INT);
-        $result->setFetchMode(\PDO::FETCH_ASSOC);
-        $result->execute();
-        return $result->fetch();
+        return false;
     }
 
 }
