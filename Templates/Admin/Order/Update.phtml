@@ -1,0 +1,78 @@
+<section>
+    <div class="container">
+        <div class="row">
+
+            <br/>
+
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="/admin/cabinet/cabinet">Cabinet</a></li>        
+                    <li><a href="/admin/order/index">Manage orders</a></li>
+                    <li class="active">View order</li>
+                </ol>
+            </div>
+
+
+            <h3>View order "#<?php echo htmlentities($order['id'], ENT_QUOTES); ?>"</h3>
+
+            <br/>
+            <table class="GeneratedTable">
+                <tr>
+                    <th>Order Id:</th>
+                    <td><?php echo htmlentities($order['id'], ENT_QUOTES); ?></td>
+                </tr>
+                <tr>
+                    <th>User Id:</th>
+                    <td><?php echo htmlentities($order['userId'], ENT_QUOTES); ?></td>
+                </tr>
+                <tr>
+                    <th>User Name:</th>
+                    <td><?php echo htmlentities($order['userName'], ENT_QUOTES); ?></td>
+                </tr>
+                <tr>
+                    <th>User Email:</th>
+                    <td><?php echo htmlentities($order['userEmail'], ENT_QUOTES); ?></td>
+                </tr>
+                <tr>
+                    <th>User Phone:</th>
+                    <td><?php echo htmlentities($order['userPhone'], ENT_QUOTES); ?></td>
+                </tr>
+                <tr>
+                    <th>Created at:</th>
+                    <td><?php echo htmlentities($order['created'], ENT_QUOTES); ?></td>
+                </tr>
+            </table>
+
+            <br/>
+            <h4>Products in order:</h4>
+            <table class="table-bordered table-striped table">
+                <tr>
+                    <th>Image</th>
+                    <th>SKU</th>
+                    <th>Name</th>
+                    <th>Price, $</th>
+                    <th>Qty</th>
+                </tr>
+                <?php foreach ($productList as $product): ?>
+                    <tr>
+                        <td><img src="<?php echo \Model\Admin\Product::getImage($product['id']); ?>" width="40px"></td>
+                        <td><?php echo htmlentities($product['sku'], ENT_QUOTES); ?></td>
+                        <td>
+                            <a href="/admin/product/update/<?php echo $product['id']; ?>">
+                                <?php echo htmlentities($product['name'], ENT_QUOTES); ?>
+                            </a>
+                        </td>
+                        <td><?php echo htmlentities($product['productPrice'], ENT_QUOTES); ?></td>
+                        <td><?php echo htmlentities($product['qty'], ENT_QUOTES); ?> </td> 
+                    </tr>
+                <?php endforeach; ?>
+                <tr>
+                    <td colspan="4">Total Price, $:</td>
+                    <td><?php echo htmlentities($order['totalPrice'], ENT_QUOTES); ?></td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</section>

@@ -44,7 +44,7 @@ class Order {
 
             foreach ($productsInCart as $product) {
                 $id = $product['productId'];
-                $productPrice = \Model\Product::getProductPrice($id);
+                $productPrice = \Model\Cart::getProductPrice($id, $quoteId);
                 $qty = $product['sum(qty)'];
                 \Model\Order::insertOrderItem($orderId, $id, $productPrice, $qty);
             }

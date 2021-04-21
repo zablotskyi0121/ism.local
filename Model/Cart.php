@@ -67,6 +67,20 @@ class Cart {
         return $quoteItemList;
     }
 
+    public static function getProductPrice($productId, $quoteId) {
+
+        $db = \System\Db::getInstance()->getPDO();
+        $result = $db->prepare('SELECT `productPrice` FROM `quoteItem` WHERE `productId` = :productId AND `quoteId` = :quoteId ');
+        $result->bindParam(':productId', $productId, \PDO::PARAM_INT);
+        $result->bindParam(':quoteId', $quoteId, \PDO::PARAM_INT);
+        $result->execute();
+        $productPrice = $result->fetch();
+        if ($productPrice) {
+            return $productPrice['productPrice'];
+        }
+        return false;
+    }
+
     public static function deleteProduct($id, $quoteId) {
 
         $db = \System\Db::getInstance()->getPDO();

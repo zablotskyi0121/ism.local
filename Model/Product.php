@@ -79,7 +79,7 @@ class Product {
 
         return $productList;
     }
-    
+
     public static function getProductPrice($productId) {
 
         $db = \System\Db::getInstance()->getPDO();

@@ -25,6 +25,7 @@
                     <th>User Email</th>
                     <th>User Phone</th>
                     <th>User Comment</th>
+                    <th></th>
                 </tr>
                 <?php foreach ($orderList as $order): ?>
                     <tr>
@@ -36,6 +37,7 @@
                         <td><?php echo htmlentities($order['userEmail'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($order['userPhone'], ENT_QUOTES); ?></td>
                         <td><?php echo htmlentities($order['userComment'], ENT_QUOTES); ?></td>
+                        <td><a href="/admin/order/update/<?php echo htmlentities($order['id'], ENT_QUOTES); ?>" title="Edit">Edit</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
