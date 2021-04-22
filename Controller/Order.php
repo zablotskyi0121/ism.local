@@ -3,7 +3,7 @@
 namespace Controller;
 
 class Order {
-    
+
     public function actionCheckout() {
 
         $userId = \System\App::getUserId();
@@ -35,6 +35,11 @@ class Order {
         $userPhone = false;
         $userComment = false;
 
+        $subject = "Your order";
+        $msg = "Test message";
+        $sender = "From: oleksandrzablotskiy255@gmail.com";
+
+
         if (isset($_POST['submit'])) {
             $userName = $_POST['userName'];
             $userEmail = $_POST['userEmail'];
@@ -51,7 +56,9 @@ class Order {
             if ($orderId) {
                 \Model\Cart::clearCart($quoteId);
             }
+
             header("Location: /order/success");
+            exec("php -r 'mail(\"" . $userEmail . "\", \"" . $subject . "\", \"" . $msg . "\", \"" . $sender . "\");' > /dev/null  &");
         }
     }
 
@@ -61,4 +68,5 @@ class Order {
         $orderId = \Model\Order::getOrderId($userId);
         \System\Renderer::render('SuccessPage', ['orderId' => $orderId]);
     }
+
 }
