@@ -35,11 +35,6 @@ class Order {
         $userPhone = false;
         $userComment = false;
 
-        $subject = "Your order";
-        $msg = "Test message";
-        $sender = "From: oleksandrzablotskiy255@gmail.com";
-
-
         if (isset($_POST['submit'])) {
             $userName = $_POST['userName'];
             $userEmail = $_POST['userEmail'];
@@ -56,9 +51,16 @@ class Order {
             if ($orderId) {
                 \Model\Cart::clearCart($quoteId);
             }
+            $order = [];
+            $order['id'] = $orderId;
+            $order['userName'] = $userName;
+            $order['userEmail'] = $userEmail;
+            $order['userPhone'] = $userPhone;
+            $order['userComment'] = $userComment;
+            $order['totalPrice'] = $totalPrice;
 
+            $this->sendEmail($order, $productList, $userEmail);
             header("Location: /order/success");
-            exec("php -r 'mail(\"" . $userEmail . "\", \"" . $subject . "\", \"" . $msg . "\", \"" . $sender . "\");' > /dev/null  &");
         }
     }
 
@@ -67,6 +69,20 @@ class Order {
         $userId = \System\App::getUserId();
         $orderId = \Model\Order::getOrderId($userId);
         \System\Renderer::render('SuccessPage', ['orderId' => $orderId]);
+    }
+
+    private function sendEmail($order, $productList, $userEmail) {
+
+        ob_start();
+        \System\Renderer::renderEmail('TemplateForEmail', ['order' => $order, 'productList' => $productList]);
+        $msg = ob_get_contents();
+        ob_end_clean();
+
+        $subject = "Your order";
+        $headers = "From: oleksandrzablotskiy255@gmail.com\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+        mail($userEmail, $subject, $msg, $headers);
     }
 
 }

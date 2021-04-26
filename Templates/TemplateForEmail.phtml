@@ -1,0 +1,47 @@
+<html>
+    <h3>Your order</h3>
+    <table class="GeneratedTable">
+        <tr>
+            <th>Order Id:</th>
+            <td><?php echo htmlentities($order['id'], ENT_QUOTES); ?></td>
+        </tr>
+        <tr>
+            <th>User Name:</th>
+            <td><?php echo htmlentities($order['userName'], ENT_QUOTES); ?></td>
+        </tr>
+        <th>User Email:</th>
+        <td><?php echo htmlentities($order['userEmail'], ENT_QUOTES); ?></td>
+    </tr>
+    <tr>
+        <th>User Phone:</th>
+        <td><?php echo htmlentities($order['userPhone'], ENT_QUOTES); ?></td>
+    </tr>
+    <tr>
+        <th>User Comment:</th>
+        <td><?php echo htmlentities($order['userComment'], ENT_QUOTES); ?></td>
+    </tr>
+</table>
+<br/>
+<h4>Products in order:</h4>
+<table class="table-bordered table-striped table">
+    <tr>
+        <th>SKU</th>
+        <th>Name</th>
+        <th>Price, $</th>
+        <th>Qty</th>
+    </tr>
+    <?php foreach ($productList as $product): ?>
+        <tr>
+            <td><?php echo htmlentities($product['sku'], ENT_QUOTES); ?></td>
+            <td><?php echo htmlentities($product['name'], ENT_QUOTES); ?></td>
+            <td><?php echo htmlentities($product['price'], ENT_QUOTES); ?></td>
+            <td><?php echo htmlentities($product['qty'], ENT_QUOTES); ?> </td> 
+        </tr>
+    <?php endforeach; ?>
+    <tr>
+        <td colspan="4">Total Price, $:</td>
+        <td><?php echo htmlentities($order['totalPrice'], ENT_QUOTES); ?></td>
+    </tr>
+
+</table>
+</html>
